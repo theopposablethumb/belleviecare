@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		
+		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+		<link rel="icon" href="articon.ico" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Links to art tutorials and learning resources, structured in a way to help anyone to learn to draw and paint to a professional standard." />
+		<meta name="theme-color" content="#46495B"/>
+		
+		<link rel="apple-touch-icon" href="articon192.png" />
+ 		<link rel="manifest" href="manifest.json" />
+ 		<link rel='stylesheet' id='belleviecare-style-css'  href='http://localhost:8888/wp-content/themes/bellevie/style.css' media='all' />
+    
+    	<title>BelleVie - Components</title>
+    	
+    	<script>
+    		let accordion = () => {
+    			let article = document.querySelectorAll(".faq");
+    			for (let i = 0; i < article.length; i++) {
+    				let plus = article[i].querySelector("img");
+    				article[i].addEventListener("click", function(){
+    						this.classList.toggle("closed");
+        					this.classList.toggle("open");
+        					plus.classList.toggle("rotate");
+    				});
+    			}
+    		};
+    		
+    		let modalOpen = () => {
+    			let article = document.querySelectorAll(".standards");
+    			for (let i = 0; i < article.length; i++) {
+    				let modal = article[i].nextElementSibling;
+    				console.log(modal);
+    				let open = article[i].querySelector("a.open");
+    				open.addEventListener("click", function(){
+    					modal.classList.remove("hidden");
+    					modal.classList.add("show");
+    				});
+    			}
+    		}
+    		
+    		let modalClose = () => {
+    			let modal = document.querySelectorAll(".modal");
+    			for (let i = 0; i < modal.length; i++) {
+    				let close = modal[i].querySelector("a.close");
+    				close.addEventListener("click", function(){
+    					modal[i].classList.add("hidden");
+    				});
+    			}
+    		}
+    		
+    		let modal = () => {
+    			modalOpen();
+    			modalClose();
+    		}
+    		
+    		let makeItSo = () => {
+    			document.addEventListener("DOMContentLoaded", function(){
+ 					accordion();
+ 					modal();
+ 					console.log("This website crafted by hand by Brendan Meachen. Want your own custom website? Contact me - www.brendanmeachen.com");
+				});
+			};
+			makeItSo();
+			
+    	</script>
+    	
+  	</head>
+  	<body>
+ 
+<header>
+		<div>
+		<div class="content">
+			<a href="http://localhost:8888/" class="custom-logo-link" rel="home"><img width="230" height="126" src="http://localhost:8888/wp-content/uploads/2020/09/bellevielogo.png" class="custom-logo" alt="Bellevie Logo"></a>			<nav>
+					<ul id="menu-main-navigation" class="menu"><li><a href="http://localhost:8888/locations/">Our Locations</a>
+<ul class="sub-menu">
+	<li><a href="http://localhost:8888/locations/oxfordshire-centre/">Oxfordshire</a></li>
+	<li><a href="http://localhost:8888/locations/tyne-and-wear/">Tyne and Wear</a></li>
+	<li><a href="http://localhost:8888/locations/county-durham/">Country Durham</a></li>
+</ul>
+</li>
+<li><a href="http://localhost:8888/our-services/">Our Services</a>
+<ul class="sub-menu">
+	<li><a href="http://localhost:8888/pricing/">Pricing</a></li>
+	<li class="current-menu-item"><a href="http://localhost:8888/faqs/" aria-current="page">FAQs</a></li>
+</ul>
+</li>
+<li><a href="http://localhost:8888/why-choose-us/">Why Choose Us</a>
+<ul class="sub-menu">
+	<li><a href="http://localhost:8888/why-choose-us/standards/">Our Standards</a></li>
+	<li><a href="http://localhost:8888/our-care-teams/">Our Care Teams</a></li>
+	<li><a href="http://localhost:8888/about-bellevie/">About Us</a></li>
+</ul>
+</li>
+<li><a href="http://localhost:8888/contact-us/">Contact Us</a></li>
+<li><a href="http://localhost:8888/careers/">Careers</a></li>
+<li><a href="http://localhost:8888/covid-19/">Covid-19</a></li>
+</ul>			</nav>
+			<a class="button ghost" href="something">Get a checklist</a>
+			<a class="button dark" href="tel: 01235355570">Call Us</a>
+			
+		</div>
+		</div>
+	</header>
+	
+	<main>
+		
+		<div class="section">
+			<div class="content">
+				<article class="faq border rounded closed">
+					<h2 class="small">How do you communicate with my family?</h2>
+					<p>We know that keeping in touch with family and friends is important, and together with your family we will look at a range of possible ways to help you stay connected. If you want to do this, we have many different options – for example, this could include a private and confidential Facebook group where we post photos and updates from you, and you family can also post and comment; it could be involve sharing learning and communication logs with your family, or testing or emailing photos. Privacy and confidentiality is very important to us, and so is helping you stay connected – we can do both. Family members can also have access to our care management app Birdie, to read notes about our visits.</p>
+					
+				</article>
+
+
+<article class="faq border rounded closed"><h2 class="small">What if I want to cancel my membership package?</h2><p>You can cancel you monthly package at any time (and for any reason) by giving us two weeks) 14 days) notice.</p>
+</article><article class="faq border rounded closed"><h2 class="small">What if I need to cancel visits?</h2><p>If you do not need our services for an entire week or more, we will not charge for you that, as long as you let us know at least two weeks in advance. We do not reimburse you for cancellations of less than one week, except in the case of an unplanned hospital admission. In the case of cancellation for shorter periods than a week, we will do our best to offer you a longer visit at another time, or on another day, if the schedule of our Wellbeing Support Workers allows it.</p>
+</article><article class="faq border rounded closed"><h2 class="small">How do you recruit and train Wellbeing Support Workers?</h2><p>We recruit people with great value, and train them to have the right skills to support you in the way you want to be supported. Everyone follows a three month initial training and observation programme., exceeding the requirements of care certificate. This means that all our Wellbeing Support Workers can confident and competently deliver the support you need and work together as a supportive and effective team. Our Wellbeing Support Workers are Dementia Friends, and gain their level 2 qualification in medication.</p>
+<p>However training is always ongoing, so should you require a suport around particular health or mobility needs we would source appropriate professional training, in order to support you safely. We follow a safe recruitment process, including DBS checks.</p>
+</article><article class="faq border rounded closed"><h2 class="small">How many Wellbeing Support Workers will visit?</h2><p>You will see different Wellbeing Support Workers from the same small, local team. You will have all of their names and pictures printed as part of your Welcome Pack, and you’ll be notified in advance of who is visiting you on a given day and time. If you have any issues or are not getting along with an individual Wellbeing Support Worker, please contact us to share your concern, and we will do our best to accommodate your preferences.</p>
+</article><article class="faq border rounded closed"><h2 class="small">How long are the visits?</h2><p>We know what has to be achieved on each visit, but our priority is achieving a positive outcome for you rather than watching the clock. Your Care and Support plan with give you a detailed list of the number and purpose of visits, and estimated minimum and maximum times for different types of visits. Short visits are&nbsp; to make sure someone is washed, dressed, and comfortable, then preparing and serving a meal are estimated to be around one hour. Longer visits, for example for social activities and housekeeping are estimated to be between one hour and three hours. We don’t do visits lasting under an hour unless specifically agreed in the care plan.</p>
+</article><article class="faq border rounded closed"><h2 class="small">What if my needs and aspirations change?</h2><p>We will review the number and length of visits you get every month, and we will discuss changing your package if you need more or less support from us.</p>
+</article><article class="faq border rounded closed"><h2 class="small">How much does a monthly membership plan cost?</h2><p>Following our free initial conversation with our Trusted Assessor at your home, we will offer you a customised monthly membership with the number of visits and outcomes you’d like to achieve. We use the number of visits and services provided to calculate the right membership price for you, at a competitive rate.</p>
+</article><article class="faq border rounded closed"><h2 class="small">Where can I find your CQC Report?</h2><p>BelleVie registered with the Care Quality Commission (CQC) in May 2020, and we are currently awaiting inspection. You can find our CQC page here. From June 2019 to May 2020, we worked in partnership with Wellbeing Teams, who were previously awarded a rating of outstanding bu the CQC (their report can be found here). We will continue to work closely with the CQC, whilst ensuring we provide outstanding care to those we support.</p>
+</article>				</div>
+			</div>
+			
+			
+			<div class="content flex relative">
+			<article class="flex whitebg border rounded standards"><div><h2 class="small">Our <span>Care and Support Networks</span></h2><p>We are members of several professional organisations, in order to work with other care providers, share best practices, and stay up to date on regulations. We form good working relationships with all other professionals involved in people’s care. We liaise on a daily basis with GP’s, Pharmacists, Occupational Therapists, District Nurses and with Age UK</p>
+<p><a class="open">Read more</a></p></div><div><img width="466" height="296" src="http://localhost:8888/wp-content/uploads/2020/10/296.jpg" alt="cute kitty" loading="lazy" srcset="http://localhost:8888/wp-content/uploads/2020/10/296.jpg 466w, http://localhost:8888/wp-content/uploads/2020/10/296-300x191.jpg 300w" sizes="(max-width: 466px) 100vw, 466px"></div></article>
+<article class="modal shadow rounded hidden"><h2>Our <span>Care and Support Networks</span></h2><p>We are members of several professional organisations, in order to work with other care providers, share best practices, and stay up to date on regulations. We form good working relationships with all other professionals involved in people’s care. We liaise on a daily basis with GP’s, Pharmacists, Occupational Therapists, District Nurses and with Age UK . 
+
+We closely support people and their families when needs increase, and support them to move on when more intensive provision is required. Our teams are also experienced in working closely with the whole network, to provide end of life care, enabling people to remain at home with their families at this important time. We work hand-in-hand with the council when people we support are eligible for funding, and with the NHS Continuing Healthcare teams.</p><a class="close">Close</a></article>
+
+<article class="flex whitebg border rounded standards"><div><h2 class="small">Care Quality Commission</h2><p>We are registered with the Care Quality Commission (CQC), you can find our page here. Our first inspection is due within the next 6 months, but we have already had to show CQC we know how to deliver a safe, well-led, caring, effective and responsive service.</p>
+<p><a class="open">Read more</a></p></div><div><img width="466" height="296" src="http://localhost:8888/wp-content/uploads/2020/10/296.jpg" alt="cute kitty" loading="lazy" srcset="http://localhost:8888/wp-content/uploads/2020/10/296.jpg 466w, http://localhost:8888/wp-content/uploads/2020/10/296-300x191.jpg 300w" sizes="(max-width: 466px) 100vw, 466px"></div></article>
+<article class="modal shadow rounded hidden"><h2>Care Quality Commission</h2><p>We are registered with the Care Quality Commission (CQC), you can find our page here. Our first inspection is due within the next 6 months, but we have already had to show CQC we know how to deliver a safe, well-led, caring, effective and responsive service.</p><a class="close">Close</a></article>
+
+<article class="flex whitebg border rounded standards"><div><h2 class="small">Wealth of experience and diversity</h2><p>BelleVie uses a ‘safe’ recruitment process and all our Wellbeing Support Workers are DBS checked. Our people have a variety of backgrounds – former teachers, health professionals, police officers, accountants, small business managers and nutritionists. We have graduates at the beginning of their careers and grandparents nearing the end of theirs, all bringing their knowledge,</p>
+<p><a class="open">Read more</a></p></div><div><img width="466" height="296" src="http://localhost:8888/wp-content/uploads/2020/10/296.jpg" alt="cute kitty" loading="lazy" srcset="http://localhost:8888/wp-content/uploads/2020/10/296.jpg 466w, http://localhost:8888/wp-content/uploads/2020/10/296-300x191.jpg 300w" sizes="(max-width: 466px) 100vw, 466px"></div></article>
+<article class="modal shadow rounded hidden"><h2>Wealth of experience and diversity</h2><p>BelleVie uses a ‘safe’ recruitment process and all our Wellbeing Support Workers are DBS checked. Our people have a variety of backgrounds - former teachers, health professionals, police officers, accountants, small business managers and nutritionists. We have graduates at the beginning of their careers and grandparents nearing the end of theirs, all bringing their knowledge, experience and personality to our self managing teams.</p><a class="close">Close</a></article>
+
+
+<article class="flex whitebg border rounded standards"><div><h2 class="small"><span>Infection Control</span></h2><p>Our teams undergo comprehensive training in infection control. During the COVID Pandemic we have issued and regularly updated the guidance from the UK’s Public Health Authorities and World Health Organisation, particularly focussed around handwashing and other hygiene measures. We have maintained good supplies of personal protective equipment during these challenging times.</p>
+<p><a class="open">Read more</a></p></div><div><img width="466" height="296" src="http://localhost:8888/wp-content/uploads/2020/10/296.jpg" alt="cute kitty" loading="lazy" srcset="http://localhost:8888/wp-content/uploads/2020/10/296.jpg 466w, http://localhost:8888/wp-content/uploads/2020/10/296-300x191.jpg 300w" sizes="(max-width: 466px) 100vw, 466px"></div></article>
+<article class="modal shadow rounded hidden"><h2><span>Infection Control</span></h2><p>Our teams undergo comprehensive training in infection control. During the COVID Pandemic we have issued and regularly updated the guidance from the UK’s Public Health Authorities and World Health Organisation, particularly focussed around handwashing and other hygiene measures. We have maintained good supplies of personal protective equipment during these challenging times.
+Furthermore, we are testing our Wellbeing Workers for COVID-19 on a weekly basis, enabling us to closely manage any risk of spreading the virus to people we support.</p><a class="close">Close</a></article>
+
+
+<article class="flex whitebg border rounded standards"><div><h2 class="small">Certificate of safe, <span>compassionate care and</span> self management</h2><p>Given that we recruit from outside the industry our training is comprehensive. We use both internal and external experts to cover all the mandatory elements required by CQC, plus training in the range of</p>
+<p><a class="open">Read more</a></p></div><div><img width="466" height="296" src="http://localhost:8888/wp-content/uploads/2020/10/296.jpg" alt="cute kitty" loading="lazy" srcset="http://localhost:8888/wp-content/uploads/2020/10/296.jpg 466w, http://localhost:8888/wp-content/uploads/2020/10/296-300x191.jpg 300w" sizes="(max-width: 466px) 100vw, 466px"></div></article>
+<article class="modal shadow rounded hidden"><h2>Certificate of safe, <span>compassionate care and</span> self management</h2><p>Given that we recruit from outside the industry our training is comprehensive. We use both internal and external experts to cover all the mandatory elements required by CQC, plus training in the range of practices required for self management. We provide additional training in frequently encountered conditions such as Dementia and Parkinson's Disease. We also use associate professionals to provide bespoke training for teams around less common conditions or at end of life, so that we can support people in the most person centred way.
+
+During induction, as well as shadowing experienced staff, they complete a comprehensive suite of e-learning courses. They then undertake face to face training in first aid, safeguarding, medication and moving and assisting, before they can work independently. Observations of practice take place regularly during the workers probationary period.</p><a class="close">Close</a></article>				
+
+				</div>
+
+		<div class="section contactTile">
+			<div class="content">
+				<h2>How to get in touch</h2>
+			</div>
+			<div class="content flex">	
+				<div class="thirds shadow centered">
+					<h4>By Phone</h4>
+					<p>Oxfordshire - 01235 355 570</p>
+					<p>North East - 01235 355 570</p>
+				</div>
+				<div class="thirds shadow centered">
+					<h4>By Email</h4>
+					<p>info@belleviecare.co.uk </p>
+				</div>
+				<div class="thirds shadow centered">
+					<h4>Contact form</h4>
+					<p>Use our online booking system to request a call back or email from one of our care experts.</p>
+				</div>
+			</div>
+		</div>
+		
+	</main>
+ 	
+ 	
+ 	
+ 	</body>
+ </html>
