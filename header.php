@@ -72,7 +72,6 @@
 					<?php wp_nav_menu( array(  'container' =>false, 'theme_location' => 'primary', ) ); ?>
 			</nav>
 			<div class="buttons">
-				<a class="button ghost" href="/wp-content/uploads/2020/10/BelleVie_Checklist.pdf">Get a checklist</a>
 				<a class="button dark call" href="/contact-us">Call Us</a>
 				<a class="button dark mobile" href="tel: 01235355570">Call Us</a>
 			</div>

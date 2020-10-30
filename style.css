@@ -85,6 +85,7 @@ img.alignleft {float: left; margin: 0 1.75em 0 0;}
 
 .button {font-size: 1em; font-weight: 500; padding: 0.625em 2em; display: inline-block; margin: 1.5em 1.5em 0 0; border-radius: 8px;}
 .dark {background: #185D6F; color: #FFF;}
+.darker {color: #FFF;}
 .button.dark:hover {background: #489982;}
 .button.light {background: #FFC247; color: #333;}
 .button.light:hover {background: #BA7800; color: #FFF;}
@@ -133,6 +134,7 @@ article {width: 100%;}
 .fullWidth {width: 100%;}
 
 div.left {float: left;}
+div.leftAlign {text-align: left;}
 
 .hidden {display: none;}
 
@@ -142,8 +144,7 @@ header>div {width: 100%; background: #FFFFFF; border: 1px solid #E5E5E5; float: 
 header .content {padding: 12px 0; max-width: 100%; margin: 0;}
 header img {width: 106px; height: 54px;}
 header a.custom-logo-link {float: left; margin-left: 5%;}
-header a.button {font-size: 1em;  float: right; margin: 0.325em 1.5em 0 0;}
-header a.button.ghost {margin-right: 3em;}
+header a.button {font-size: 1em;  float: right; margin: 0.325em 3em 0 0;}
 header a.mobile {display: none;}
 
 nav ul, ul.menu, ul.menu ul {list-style-type: none; margin: 0; padding: 0;}
@@ -299,14 +300,17 @@ article.services.icons {padding-top: 5.75em;}
 .branchTeam .image {height: 394px;}
 .branchTeam img {display: block;}
 
+.darker a {color: #F8E8B1;}
 .branchListing {margin: 1em 0;}
 .branchListing a {font-size: 2em; color: #185D6F; text-decoration: underline;}
+.darker .branchListing a {font-size: 1.5em; color: #F8E8B1;}
 a.phone {padding: 0.5em 0 0.5em 3em; background: url('icons/phone-greencircle.svg') no-repeat top left;  background-size: 64px;}
 a.email {padding: 0.5em 0 0.5em 3em; background: url('icons/mail-greencircle.svg') no-repeat top left;  background-size: 64px;}
 .branchListing a:hover {text-decoration: none;}
 .branchListing h2 {line-height: inherit; padding: 0.5em 0;}
 .branchListing p {padding: 1em 0;}
 .branchListing h2, .branchListing p, .branchListing a {margin: 0 2em 0 0;}
+.branchListing:last-child a {font-size: 1em;}
 
 .compare {margin-top: 3.875em;}
 .compare h2 {color: #185D6F; font-size: 3em; line-height: 1em; font-weight: 400; margin: 0.833em 0 0.667em 0;}
@@ -382,7 +386,8 @@ th:nth-child(even) {padding: 2em 4.687em 1em 3em;}
 td {padding: 1em 3em 1em 4.687em; vertical-align: top;}
 td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 
-.page-pricing .dark {margin-bottom: 2.125em;}
+.page-pricing .dark {}
+.page-pricing .section.darker {background: #124654; margin-bottom: 2.125em; padding-bottom: 2.125em;}
 .page-pricing .dark h2.large {font-size: 2em;}
 .dark table {margin: 2em auto; width: 70%; color: #333;}
 .dark table p {margin: 0; text-align: left;}
@@ -502,8 +507,9 @@ td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 	header nav ul.sub-menu li:last-child {border: none;}
 	header nav a {padding: 0.4em 0.6em;}
 	header nav ul ul a {padding: 8px 24px;}
+	header a.openNav {margin-right: 1.5em;}
 	header a.button {margin-top: 0;}
-	header a.button.ghost, header .buttons a.call {display: none;}
+	header .buttons a.call {display: none;}
 	header .buttons a.mobile {display: block;}
 	header a.button.dark {background-position: 10px 14px; margin-right: 0; border-radius: 4px; padding-left: 2em; padding-right: 1em;}
 	header a.button.dark:hover {background-position: 10px 14px;}

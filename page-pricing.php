@@ -36,7 +36,31 @@ get_header();
 				<?php dynamic_sidebar( 'row-2'); ?>
 			</div>
 		</div>
-			
+		<div class="section whitebg">
+			<div class="content padded">
+				<h2 class="light">Talk to us to find out how we can support you</h2>	
+				<?php
+				// The Query
+				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'order' => 'ASC', 'posts_per_page' => -1 ) );
+ 
+				// The Loop
+				while ( $queryValues->have_posts() ) {
+    				$queryValues->the_post();
+    				echo '<article class="branchListing content flex"><a class="phone" href="tel: ' . get_field('phone_number') . '">' . get_field('phone_number') . '</a>';
+    				echo '<p><strong>' . get_field('branch_name') . '</strong></p>';
+    				echo '<p>' . get_field('opening_hours') . '</p></article>';
+				}
+				wp_reset_postdata(); ?>
+					<article class="branchListing content flex justifyLeft"><a class="email" href="mailto: info@belleviecare.co.uk">info@belleviecare.co.uk</a><p>Send us an email, we usually respond within 24 hours.</p></article>
+					<article class="branchListing"><p>Or request a call back from one of our WellBeing Support experts via our <a href="/contact-us">contact form</a></p></article>
+			</div>
+		</div>			
+		
+		<div class="section">
+			<div class="content">
+	 			<?php dynamic_sidebar( 'row-1'); ?>
+ 			</div>
+ 		</div> 
 			
 		<div class="section">
 			<div class="content">
@@ -62,12 +86,6 @@ get_header();
 				wp_reset_postdata(); ?>
 			</div>
 		</div>
-					
-			<div class="section">
-				<div class="content">
-	 				<?php dynamic_sidebar( 'row-1'); ?>
- 				</div>
- 			</div> 
 			
 			<div class="section"> 
 				<?php dynamic_sidebar( 'row-4'); ?> 
