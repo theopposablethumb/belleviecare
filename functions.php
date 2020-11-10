@@ -236,8 +236,17 @@ function belleviecare_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	
+	if(is_page()){
+		global $wp_query;
+        $template_name = get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
+		if($template_name === 'page-contact-us.php' || 'page.php'){
+	   	wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');		
+		}
+   }
 }
 add_action( 'wp_enqueue_scripts', 'belleviecare_scripts' );
+
 
 //Remove Gutenberg Block Library CSS from loading on the frontend
 function smartwp_remove_wp_block_library_css(){

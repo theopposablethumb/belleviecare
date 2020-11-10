@@ -55,6 +55,7 @@
  		<img height="1" width="1" src="https://www.facebook.com/tr?id=772022193176062&ev=PageView&noscript=1"/>
 	</noscript>
 	<!-- End Facebook Pixel Code -->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -73,7 +74,13 @@
 			</nav>
 			<div class="buttons">
 				<a class="button dark call" href="/contact-us">Call Us</a>
-				<a class="button dark mobile" href="tel: 01235355570">Call Us</a>
+				<?php $postName = $post->post_name; //Get the slug of the current page
+						if (strpos($postName, 'durham') !== false) {
+							echo '<a class="button dark mobile" href="tel: 01987654321">Call Us</a>';
+						} else {
+							echo '<a class="button dark mobile" href="tel: 01235355570">Call Us</a>';
+						} 
+					?>
 			</div>
 			<a class="button openNav">Menu</a>
 			

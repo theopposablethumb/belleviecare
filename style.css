@@ -53,7 +53,8 @@ h2.light {font-weight: 400; margin-bottom: 0;}
 .cms-page h2, .cookie-statement h2 {font-weight: 400; margin-top: 1.25em; margin-bottom: 0.5em;}
 h3 {font-size: 1.4em; line-height: 1.5em; margin: 1em 0 0 0;}
 h4 {font-size: 1.25em; line-height: 1.5em; font-weight: 500; margin: 1.6em 0 0 0;}
-p, ul, ol, h2.small {font-size: 1.25em; line-height: 1.5em; margin: 1em 0 0 0;}
+p, ul, ol, label, input, textarea, h2.small {font-size: 1.25em; line-height: 1.5em; margin: 1em 0 0 0;}
+textarea {font-family: 'Roboto', sans-serif; font-weight: 400;}
 ul {padding: 0 1em;}
 ul ul {font-size: 1em;}
 a {color: #BA7800; text-decoration: none;}
@@ -83,7 +84,7 @@ img.alignleft {float: left; margin: 0 1.75em 0 0;}
 .whitebg {background: #FFF;}
 .offwhitebg {background: #FAFAFA;}
 
-.button {font-size: 1em; font-weight: 500; padding: 0.625em 2em; display: inline-block; margin: 1.5em 1.5em 0 0; border-radius: 8px;}
+.button {font-size: 1em; font-weight: 500; padding: 0.625em 2em; display: inline-block; margin: 1.5em 1.5em 0 0; border-radius: 8px; border: none;}
 .dark {background: #185D6F; color: #FFF;}
 .darker {color: #FFF;}
 .button.dark:hover {background: #489982;}
@@ -183,7 +184,23 @@ a.twitter {background: url('icons/twitter.svg') no-repeat; background-size: 24px
 
 .contact .flex {display: block;}
 .contact h2 {font-size: 3em; margin: 0; font-weight: 400;}
-.hbspt-form {background: #FFF; padding: 2em 2.5em 1em 2.5em; margin: 1.25em 0 2.5em 0; border-radius: 4px; border: 1px solid #E4E4E4;}
+.content form {background: #FFF; padding: 0 2.5em 1em 2.5em; margin: 1.25em 0 2.5em 0; border-radius: 4px; border: 1px solid #E4E4E4;}
+.content form label, .content form p {color: #333;}
+label, input, textarea {display: block;}
+input.button {font-size: 1em;}
+label {margin: 2em 0 0 0;}
+input, textarea {padding: 0.75em 1em; width: 40%; margin: 0.5em 0 0 0; background: #f5f5f5;}
+.content input, .content textarea {width: 60%;}
+input::placeholder, textarea::placeholder {color: #888888;}
+input:focus, textarea:focus {border: 2px solid #185D6F; outline: none;}
+input:invalid, input.error, textarea:invalid, textarea.invalid {border: 2px solid #CC0300;}
+form p.error {margin-top: 0.5em; color: #CC0300;}
+
+.g-recaptcha {margin-top: 2em;}
+
+.banner form {background: #fff; position: relative; padding: 4.5em 2.5em 2em 2.5em;}
+.banner form.content {margin-bottom: 2.375em;}
+.banner input {width: 100%; box-sizing: border-box;}
 
 .relative{position: relative;}
 
@@ -290,7 +307,7 @@ article.services.icons {padding-top: 5.75em;}
 .modal h2 {font-weight: 400; margin-bottom: 2em}
 .modal h2 span {background: linear-gradient(180deg, #F8F8F5 60%, #F8E8B1 40%);}
 .modal p {margin-bottom: 2em;}
-.modal a.close {position: absolute; top: 1em; left: 2em; display: block; padding: 1em 1.5em; background: url('icons/close.svg') center left no-repeat; background-size: 16px 12px;}
+.modal a.close, .banner a.close {position: absolute; top: 1em; left: 2em; display: block; padding: 1em 1.5em; background: url('icons/close.svg') center left no-repeat; background-size: 16px 12px;}
 
 .branchTeam {width: 891px; margin-bottom: 3em;}
 .branchTeam:last-child {margin-bottom: 0;}
@@ -542,6 +559,15 @@ td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 	.quarters:nth-child(4) {margin-right: auto;} 
 	.thirds {width: 100%; margin: 0 0 2em 0;}
 	.halves {width: 100%;}
+	
+	input, label, input.button {font-size: 1em;}
+	input {width: 100%; box-sizing: border-box;}
+	
+	.banner {width: 100%; height: fit-content; background: none; position: relative;}
+	.banner form {background: #fff; transform: none; left: 0; top: 0; position: relative; padding: 4.5em 2.5em 2em 2.5em;}
+	.banner input {width: 100%; box-sizing: border-box;}
+	.content input, .content textarea {width: 100%; box-sizing: border-box;}
+	.g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
 	
 	.videoWrapper {width: 100%; padding-bottom: 56.25%; /* 16:9 */}
 	
