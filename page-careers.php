@@ -39,7 +39,6 @@ get_header();
 			<?php
 				// The Query
 				$queryServices = new WP_Query( array( 'post_type' => 'job', 'posts_per_page' => -1 ) );
- 
  			if ( $queryServices->have_posts() ) {
 				// The Loop
 				while ( $queryServices->have_posts() ) {

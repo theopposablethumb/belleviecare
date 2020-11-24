@@ -14,7 +14,6 @@
 
 get_header();
 ?>
-
 	<main>
 		<div class="section notifications">
 			<div class="content">
@@ -23,22 +22,21 @@ get_header();
 		</div>
 		<div class="banner hidden">
 			<form class="content rounded border hspot" data-form="a5b30c32-7d7d-420e-b9a8-ee9c35f6f2dd">
-					<h2 class="light green">Considering your home care options?</h2>
-					<p>Download our brochure today to learn more about BelleVie.</p>
-					<label for="firstname">First Name</label>
-					<input type="text" id="firstname" name="firstname" required class="border rounded" placeholder="Please enter your first name">
-					<label for="lastname">Last Name</label>
-					<input type="text" id="lastname" name="lastname" required class="border rounded" placeholder="Please enter your surname">
-					<label for="phone">Phone number</label>
-					<input type="tel" id="phone" name="phone" required class="border rounded" placeholder="Example 07123456789">
-					<div class="g-recaptcha" data-sitekey="6Lejvd8ZAAAAAO5PbIUn5ofoIByWu86dj1yHHotH"></div>
-					<input type="submit" value="Download now" class="button light">
-					<p class="small">By submitting your details you are consenting to be contacted by BelleVie. Click here to read our <a href="/privacy-policy">privacy policy.</a></p>
+				<h2 class="light green">Considering your home care options?</h2>
+				<p>Download our brochure today to learn more about BelleVie.</p>
+				<label for="firstname">First Name</label>
+				<input type="text" id="firstname" name="firstname" required class="border rounded" placeholder="Please enter your first name">
+				<label for="lastname">Last Name</label>
+				<input type="text" id="lastname" name="lastname" required class="border rounded" placeholder="Please enter your surname">
+				<label for="mobilephone">Phone number</label>
+				<input type="tel" id="mobilephone" name="mobilephone" required class="border rounded" placeholder="Example 07123456789">
+				<div class="g-recaptcha" data-sitekey="6Lejvd8ZAAAAAO5PbIUn5ofoIByWu86dj1yHHotH"></div>
+				<input type="submit" value="Download now" class="button light">
+				<p class="small">By submitting your details you are consenting to be contacted by BelleVie. Click here to read our <a href="/privacy-policy">privacy policy.</a></p>
 					<p class="small">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
-					<a class="close">Close</a>
-				</form>
+				<a class="close">Close</a>
+			</form>
 		</div>
-
 		<div class="section hero">
 			<div class="content flex">
 				<?php dynamic_sidebar( 'hero'); ?>
@@ -57,8 +55,11 @@ get_header();
 		<div class="section whitebg">
 			<div class="content flex justifyLeft">
 			<?php
+				$postName = $post->post_name; //Get the slug of the current page
+				$currentPage = substr($postName, 0, strrpos($postName, '-')); //remove everything after the last hyphen so we can use the slug of the current page as a category name
+				
 				// The Query
-				$queryValues = new WP_Query( array( 'post_type' => 'values', 'order' => 'ASC', 'posts_per_page' => 4 ) );
+				$queryValues = new WP_Query( array( 'post_type' => 'values', 'category_name' => $currentPage, 'order' => 'ASC', 'posts_per_page' => 4 ) );
  
 				// The Loop
 				while ( $queryValues->have_posts() ) {
@@ -117,8 +118,7 @@ get_header();
 				}
 				wp_reset_postdata(); ?>
 				</div>
-			</div>
-			
+		</div>
 			<div class="section whitebg">
 				<div class="content centered">
 					<?php dynamic_sidebar( 'row-3'); ?>
@@ -135,7 +135,7 @@ get_header();
 						if (strpos($postName, 'oxford') !== false) {
 							echo '<a class="button light" href="tel: 01235 355 570">Call 01235 355 570</a>';
 						} else {
-							echo '<a class="button light" href="tel: 01987 654 321">Call 01987 654 321</a>';
+							echo '<a class="button light" href="tel: 0191 313 0189">Call 0191 313 0189</a>';
 						} ?>
 					</div>
 				</div>

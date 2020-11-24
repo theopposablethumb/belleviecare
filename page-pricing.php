@@ -54,11 +54,11 @@ get_header();
 					<article class="branchListing content flex justifyLeft"><a class="email" href="mailto: info@belleviecare.co.uk">info@belleviecare.co.uk</a><p>Send us an email, we usually respond within 24 hours.</p></article>
 					<article class="branchListing"><p>Or request a call back from one of our WellBeing Support experts via our <a href="/contact-us">contact form</a></p></article>
 			</div>
-		</div>			
+		</div>
 		
 		<div class="section">
 			<div class="content">
-	 			<?php dynamic_sidebar( 'row-1'); ?>
+				<?php dynamic_sidebar( 'row-1'); ?>
  			</div>
  		</div> 
 			

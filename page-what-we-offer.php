@@ -53,10 +53,10 @@ get_header();
 				</div>
 			</div>
 			
-			<div class="section">		
+			<div class="section dark">		
  				<div class="content">
- 					<h2 class="light">Learn more about our membership plans and pricing</h2>
- 					<a class="button dark" href="/pricing">View plans</a>
+ 					<h2 class="light">Call our team today to discuss how a tailored care package could help you and your loved ones.</h2>
+ 					<a class="button light" href="tel: 01235 355 570">Call us</a>
  				</div>
  			</div>
  			<div class="section">

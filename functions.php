@@ -194,25 +194,11 @@ function wps_post_thumbnail_remove_class($output) {
 }
 add_filter('post_thumbnail_html', 'wps_post_thumbnail_remove_class');
 
-function excerpt_read_more_link($output) {
-	global $post;
-	if ($post->post_type != 'services')
-  	{
-    	$output .= '<p><a href="'. get_permalink($post->ID) . '">read more</a></p>';  
-  	}
-  	return $output;
-}
-add_filter('the_excerpt', 'excerpt_read_more_link');
-
-function new_excerpt_more( $more ) {
-    return '';
-}
-add_filter('excerpt_more', 'new_excerpt_more');
-
 function modify_read_more_link() {
-    return '<a class="button ghost" href="' . get_permalink() . '">Read more</a>';
+    return '<a class="button ghost" href="' . get_permalink() . '">Read more...</a>';
 }
 add_filter( 'the_content_more_link', 'modify_read_more_link' );
+
 
 //Page Slug Body Class
 function add_slug_body_class( $classes ) {
@@ -227,6 +213,10 @@ add_filter( 'body_class', 'add_slug_body_class' );
 /**
  * Enqueue scripts and styles.
  */
+ 
+ function my_enqueue_assets() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+}
 function belleviecare_scripts() {
 	wp_enqueue_style( 'belleviecare-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css') );
 	wp_style_add_data( 'belleviecare-style', 'rtl', 'replace' );
@@ -237,16 +227,49 @@ function belleviecare_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
-	if(is_page()){
+	if(is_page(array('contact-us', 93, 95, 97))){
 		global $wp_query;
-        $template_name = get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
-		if($template_name === 'page-contact-us.php' || 'page.php'){
-	   	wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');		
-		}
+	   	wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');
+	   	wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+   } elseif(is_category('news')) {
+   		global $wp_query;
+   		wp_enqueue_script( 'belleviecare-pagination', get_template_directory_uri() . '/js/pagination.js', array(), _S_VERSION, true );
+   		wp_localize_script( 'belleviecare-pagination', 'pagination', array('ajaxurl' => admin_url( 'admin-ajax.php' )));
+   }  elseif(is_page('news-page')) {
+   		global $wp_query;
+   		wp_enqueue_script( 'belleviecare-pagination', get_template_directory_uri() . '/js/pagination.js', array(), _S_VERSION, true );
+   		wp_localize_script( 'belleviecare-pagination', 'pagination', array('ajaxurl' => admin_url( 'admin-ajax.php' ), 'security' => wp_create_nonce( 'load_more_posts' ) ));
+   } elseif(is_page('standards')) {
+   		wp_enqueue_script( 'modal', get_template_directory_uri() . '/js/modal.js', array(), _S_VERSION, true );
+   } elseif(is_page('faqs')) {
+   		wp_enqueue_script( 'sliders', get_template_directory_uri() . '/js/sliders.js', array(), _S_VERSION, true );
+   } elseif (is_page('careers')) {
+   		wp_enqueue_script( 'careers', get_template_directory_uri() . '/js/careers.js', array(), _S_VERSION, true );
    }
 }
 add_action( 'wp_enqueue_scripts', 'belleviecare_scripts' );
 
+add_filter('script_loader_tag', 'add_defer_tags_to_scripts');
+function add_defer_tags_to_scripts($tag){
+    $scripts_to_defer = array('recaptcha');
+ 
+    foreach($scripts_to_defer as $current_script){
+        if(true == strpos($tag, $current_script))
+             return str_replace(' src', ' defer="defer" src', $tag);
+    }
+    return $tag;
+ }
+ 
+ add_filter('script_loader_tag', 'add_async_tags_to_scripts');
+function add_async_tags_to_scripts($tag){
+    $scripts_to_async = array('recaptcha');
+ 
+    foreach($scripts_to_async as $current_script){
+        if(true == strpos($tag, $current_script))
+             return str_replace(' src', ' async="async" src', $tag);
+    }
+    return $tag;
+ }
 
 //Remove Gutenberg Block Library CSS from loading on the frontend
 function smartwp_remove_wp_block_library_css(){
@@ -282,3 +305,43 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+//Allow editors to edit Privacy Policy Page
+add_action('map_meta_cap', 'custom_manage_privacy_options', 1, 4);
+function custom_manage_privacy_options($caps, $cap, $user_id, $args)
+{
+  if (!is_user_logged_in()) return $caps;
+
+  $user_meta = get_userdata($user_id);
+  if (array_intersect(['editor', 'administrator'], $user_meta->roles)) {
+    if ('manage_privacy_options' === $cap) {
+      $manage_name = is_multisite() ? 'manage_network' : 'manage_options';
+      $caps = array_diff($caps, [ $manage_name ]);
+    }
+  }
+  return $caps;
+}
+
+function get_ajax_posts() {
+	check_ajax_referer('load_more_posts', 'security');
+    $paged = $_POST['page'];
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'category_name' => 'news',
+        'posts_per_page' => '9',
+        'paged' => $paged,
+    );
+    $news_posts = new WP_Query( $args );
+ 
+  	if ( $news_posts->have_posts() ) :
+    	while ( $news_posts->have_posts() ) : $news_posts->the_post();
+        	get_template_part( 'template-parts/content', get_post_type() );
+        endwhile; 
+    endif;
+ 
+    wp_die();
+}
+
+add_action('wp_ajax_get_ajax_posts', 'get_ajax_posts');
+add_action('wp_ajax_nopriv_get_ajax_posts', 'get_ajax_posts');

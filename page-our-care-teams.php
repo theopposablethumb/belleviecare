@@ -42,7 +42,7 @@ get_header();
 				};
 				
 				// The Query
-				$queryServices = new WP_Query( array( 'post_type' => 'branch', 'order' => 'ASC', 'posts_per_page' => -1 ) );
+				$queryServices = new WP_Query( array( 'post_type' => 'branch', 'order' => 'ASC', 'posts_per_page' => 2 ) );
  
 				// The Loop
 				while ( $queryServices->have_posts() ) {

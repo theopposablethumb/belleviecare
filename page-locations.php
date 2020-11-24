@@ -16,27 +16,7 @@ get_header();
 ?>
 
 	<main>
-	<div class="section notifications">
-			<div class="content">
-				<p>Considering your home care options? Download our brochure today to learn more about BelleVie. <a>Download</a></p>
-			</div>
 		</div>
-		<div class="banner hidden">
-			<form class="content rounded border hspot">
-					<h2 class="light green">Considering your home care options?</h2>
-					<p>Download our brochure today to learn more about BelleVie.</p>
-					<label for="firstname">First Name</label>
-					<input type="text" id="firstname" name="firstname" required class="border rounded" placeholder="Please enter your first name">
-					<label for="lastname">Last Name</label>
-					<input type="text" id="lastname" name="lastname" required class="border rounded" placeholder="Please enter your surname">
-					<label for="phone">Phone number</label>
-					<input type="tel" id="phone" name="phone" required class="border rounded" placeholder="Example 07123456789">
-					<input type="submit" value="Download now" class="button light">
-					<p class="small">By submitting your details you are consenting to be contacted by BelleVie. Click here to read our <a href="/privacy-policy">privacy policy.</a></p>
-					<a class="close">Close</a>
-				</form>
-		</div>
-
 		<div class="section hero">
 			<div class="content flex">
 				<?php dynamic_sidebar( 'hero'); ?>

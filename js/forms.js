@@ -84,7 +84,7 @@ let thankYouMessage = () => {
 	 		<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 01235 355 570</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-SE.pdf'>Download your free brochure</a>
   	`;
-	} else if (window.location.pathname === "/locations/county-durham-homecare/") {
+	} else if (window.location.pathname === "/locations/county-durham-homecare/" || window.location.pathname === "/locations/tyne-and-wear-homecare/") {
 		div.innerHTML = `
 	    	<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 0191 313 0189</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-NE.pdf'>Download your free brochure</a>
@@ -149,24 +149,6 @@ let errorMessage = (error) => {
 		errorMessages(errorType);
 	}
 }
-
-/*
-let getCookie = (name) => {
-    // Split cookie string and get all individual name=value pairs in an array
-    let cookies = document.cookie.split(";");
-    
-    // Loop through the array elements
-    for(let i = 0; i < cookies.length; i++) {
-        let cookiePair = cookies[i].split("=");
-        if(name == cookiePair[0].trim()) {
-            // Decode the cookie value and return
-            console.log(decodeURIComponent(cookiePair[1]))
-            return decodeURIComponent(cookiePair[1]);
-        }
-    }
-    // Return null if not found
-    return null;
-} */
 
 let youShallNotPass = () => {
 	const button = document.querySelector('input[type=submit]');

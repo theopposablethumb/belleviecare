@@ -27,7 +27,7 @@ get_header();
 		
 			<div class="section">
 				<div class="content">
-					<h2 class="large green">Our Central Team</h2>
+					<h2 class="large green">Our Leadership Circle</h2>
 				</div>
 				<div class="content flex">
 				
