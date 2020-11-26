@@ -103,14 +103,92 @@ get_header();
 				wp_reset_postdata(); ?>
 				</div>
 			</div>
+			
+			<div class="section whitebg">
+				
+				<?php
+				
+				$postName = $post->post_name; //Get the slug of the current page
+				$currentPage = substr($postName, 0, strrpos($postName, '-')); //remove everything after the last hyphen so we can use the slug of the current page as a category name
+								
+				// The Query
+				$postName = $post->post_name; //Get the slug of the current page
+				$currentPage = substr($postName, 0, strrpos($postName, '-')); //remove everything after the last hyphen so we can use the slug of the current page as a category name
+				$catTitle = ucwords(str_replace("-"," ", $currentPage));
+				$queryNews = new WP_Query( array( 'category_name' => $currentPage, 'post_type' => 'post', 'posts_per_page' => 3 ) ); //magic!
+				
+				echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $catTitle . '</h2></div>'; ?>
+				
+				<div class="content flex news">
+				<?php 
+				if ( $queryNews->have_posts() ) :
+    				while ( $queryNews->have_posts() ) : $queryNews->the_post();
+        				echo '<article class="thirds border whitebg rounded"><div class="image">';
+						echo the_post_thumbnail();
+						echo '</div>';
+						echo the_title( '<h3>', '</h3>' );
+						echo belleviecare_posted_on();
+						echo the_content();
+						echo '</article>';
+        			endwhile; 
+    			endif;
+    			wp_reset_postdata();
+				?>
+				</div>
+				<?php echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $catTitle . '</h2></div>'; ?>
+				<div class="content news">
+				<?php 
+				if ( $queryNews->have_posts() ) :
+    				while ( $queryNews->have_posts() ) : $queryNews->the_post();
+        				echo '<article class="thumb flex rounded border offwhitebg"><div class="image">';
+						echo the_post_thumbnail();
+						echo '</div><div>';
+						echo the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+						echo '<p class="small">Posted on ' . get_the_date() . ' by ' . get_the_author_meta('display_name') . '</p>';
+						echo '</div></article>';
+        			endwhile; 
+    			endif;
+    			wp_reset_postdata();
+				?>
+				</div>
+				<?php echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $catTitle . '</h2></div>'; ?>
+				<div class="content news">
+				<?php 
+				if ( $queryNews->have_posts() ) :
+    				while ( $queryNews->have_posts() ) : $queryNews->the_post();
+        				echo '<article class="thumbLarge flex rounded border offwhitebg"><div class="image">';
+						echo the_post_thumbnail();
+						echo '</div><div>';
+						echo the_title( '<h2>', '</h2>' );
+						echo '<p class="small">Posted on ' . get_the_date() . ' by ' . get_the_author_meta('display_name') . '</p>';
+						echo the_content();
+						echo '</div></article>';
+        			endwhile; 
+    			endif;
+    			wp_reset_postdata();
+				?>
+				</div>
+				<?php echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $catTitle . '</h2></div>'; ?>
+				<div class="content flex news">
+				<?php 
+				if ( $queryNews->have_posts() ) :
+    				while ( $queryNews->have_posts() ) : $queryNews->the_post();
+        				echo '<article class="titles">';
+						echo the_title( '<h3><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
+						echo belleviecare_posted_on();
+						echo '</article>';
+        			endwhile; 
+    			endif;
+    			wp_reset_postdata();
+				?>
+				</div>
+			</div>
+			
 			<div class="section local">
 				<div class="content">
 				<?php
 				// The Query
-				$postName = $post->post_name; //Get the slug of the current page
-				$currentPage = substr($postName, 0, strrpos($postName, '-')); //remove everything after the last hyphen so we can use the slug of the current page as a category name
 				$queryValues = new WP_Query( array( 'name' => $currentPage, 'post_type' => 'branch', 'posts_per_page' => 1 ) ); //magic!
- 
 				// The Loop
 				while ( $queryValues->have_posts() ) {
     				$queryValues->the_post();

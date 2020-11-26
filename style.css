@@ -423,6 +423,7 @@ td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 /* May want to fix this for all .thirds */ 
 .news .thirds {padding: 0;}
 .news .thirds h2 {padding: 0 1em; margin: 1em 0 0 0;}
+.news .thirds h3 {padding: 0 1.25em; margin: 1em 0 0 0;}
 .news .thirds p {padding: 0 1.5em;}
 .news .image img {height: auto; width: 100%;}
 .category-sticky .image {height: 500px;}
@@ -435,14 +436,31 @@ td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 .news .button {margin: 1em 1.5em 1.5em 0;} 
 .news article .button.ghost, .sticky .button.ghost {margin-left: 0;}
 
+/* local news styles */
+.page-template-default .news article p {font-size: 1em;}
+
 .sticky {margin-bottom: 2em;}
 .sticky div { box-sizing: border-box; width: 50%; padding: 3em 1.5em 3em 3em;}
 .sticky div:first-child {padding: 0;}
 .sticky .image {height: 100%; width: 100%; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25); }
 .sticky a {color: #fff;}
 
+article.thumb, article.thumbLarge {margin-bottom: 1.5em;}
+article.thumb .image {width: 200px; height: 130px;}
+article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
+article.thumb p.small {padding: 0 1em; color: #666;}
+
+article.thumbLarge .image {width: 30%; height: auto;}
+article.thumbLarge div:nth-child(2) {width: 70%;}
+article.thumbLarge h2 {padding: 0 1em; margin: 0.5em 0;}
+article.thumbLarge p {padding: 0 1.6em;}
+article.thumbLarge p.small {padding: 0 2em; color: #666;}
+.news article.thumbLarge .image img {height: 100%; width: auto;}
+
+article.titles p.publishDate {padding: 0;}
+
 article footer {background: none; color: #333; display: flex; margin-top: 1.5em; padding: 0;}
-	article footer p {font-size: 1em; color: #666; margin-right: 1em; padding-right: 1em; border-right: 1px solid #333;}
+article footer p {font-size: 1em; color: #666; margin-right: 1em; padding-right: 1em; border-right: 1px solid #333;}
 article footer p:last-of-type {border-right: none;}
 article footer a {color: #BA7800;}
 
@@ -708,5 +726,16 @@ article footer a {color: #BA7800;}
 	footer .fifths:first-child {width: 100%;}
 	
 	.page-contact-us .steps:first-child, .page-contact-us .steps:nth-child(2), .page-contact-us .steps:nth-child(3) {background-position: center 16px;}
-	
+
+	/* local news styles */
+	article.thumb, article.thumbLarge {padding: 0;}
+	article.thumb .image {width: 100%; height: 150px;}
+	article.thumb .image img {height: auto; width: 100%;}
+	article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
+	article.thumb p.small {margin-bottom: 1em;}
+
+	article.thumbLarge .image {width: 100%; height: 300px;}
+	article.thumbLarge div:nth-child(2) {width: 100%;}
+	article.thumbLarge p.small {padding: 0 1.6em;}
+	.news article.thumbLarge .image img {height: 100%; width: auto;}
 }
