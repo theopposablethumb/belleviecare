@@ -101,6 +101,17 @@ if ( ! function_exists( 'belleviecare_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'belleviecare_setup' );
 
+/* REMOVE JQUERY FROM WORDPRESS
+	Complianz plugin relies on JQuery :( so I may need to replace it
+function removeJquery() {
+    if (!is_admin()) {
+        wp_deregister_script('jquery');
+        wp_register_script('jquery', false);
+    }
+}
+add_action('init', 'removeJquery');
+*/ 
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -145,6 +156,17 @@ function belleviecare_widgets_init() {
 		array(
 			'name' => esc_html__( 'Row Two' ),
 			'id'  => 'row-2',
+			'description' => esc_html__( 'Add widgets here.', 'belleviecare' ),
+			'before_widget' => '<div class="content flex centered padded">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="large">',
+			'after_title'   => '</h2>',
+		)
+	);
+		register_sidebar(
+		array(
+			'name' => esc_html__( 'Reviews' ),
+			'id'  => 'reviews',
 			'description' => esc_html__( 'Add widgets here.', 'belleviecare' ),
 			'before_widget' => '<div class="content flex centered padded">',
 			'after_widget'  => '</div>',
@@ -227,10 +249,13 @@ function belleviecare_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
-	if(is_page(array('contact-us', 93, 95, 97))){
+	if(is_page(array('contact-us', 93, 95, 97, 685, 691, 694, 697,))){
 		global $wp_query;
 	   	wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');
 	   	wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+	   	wp_enqueue_script('location', get_template_directory_uri() .'/js/location.js');
+	   	wp_enqueue_script('openLayers', get_template_directory_uri() .'/js/openlayers/ol.js');
+	   	wp_enqueue_script( 'maps', get_template_directory_uri() . '/js/maps.js');
    } elseif(is_category('news')) {
    		global $wp_query;
    		wp_enqueue_script( 'belleviecare-pagination', get_template_directory_uri() . '/js/pagination.js', array(), _S_VERSION, true );
@@ -245,7 +270,10 @@ function belleviecare_scripts() {
    		wp_enqueue_script( 'sliders', get_template_directory_uri() . '/js/sliders.js', array(), _S_VERSION, true );
    } elseif (is_page('careers')) {
    		wp_enqueue_script( 'careers', get_template_directory_uri() . '/js/careers.js', array(), _S_VERSION, true );
-   }
+   }/* elseif(is_page_template('local-landing-page.php')) {
+   		wp_enqueue_script('openLayers', 'https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js');
+   		wp_enqueue_script( 'maps', get_template_directory_uri() . '/js/maps.js');
+   } */
 }
 add_action( 'wp_enqueue_scripts', 'belleviecare_scripts' );
 
@@ -345,3 +373,12 @@ function get_ajax_posts() {
 
 add_action('wp_ajax_get_ajax_posts', 'get_ajax_posts');
 add_action('wp_ajax_nopriv_get_ajax_posts', 'get_ajax_posts');
+
+function is_child($pageID) { 
+	global $post; 
+	if( is_page() && ($post->post_parent==$pageID) ) {
+               return true;
+	} else { 
+               return false; 
+	}
+}

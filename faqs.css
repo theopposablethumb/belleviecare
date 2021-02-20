@@ -1,0 +1,23 @@
+.faq {padding: 1.5em 2.5em; box-sizing: border-box; margin-bottom: 1.5em; position: relative;}
+.faq h2 {color: #185D6F; margin: 0;}
+.faq h2:hover {cursor: pointer;}
+.faq p {padding-right: 5em;}
+.faq.closed p {height: 0; overflow: hidden; margin: 0;}
+.faq.open p { height: 7.5em; -webkit-transition: height 0.3s ease-in; -moz-transition: height 0.3s ease-in; -o-transition: height 0.3s ease-in; -ms-transition: height 0.3s ease-in; transition: height 0.3s ease-in;  animation: 0.3s delay-overflow;}
+@keyframes delay-overflow { from { overflow: hidden; } }
+
+.faq img {position: absolute; top: 1.375em; right: 3.25em; transition-duration: 0.3s; transition-property: transform; }
+.faq img.rotate { transform: rotate(45deg); -webkit-transform: rotate(45deg); }
+
+@media screen and (max-width: 1024px) {
+	.faq {padding: 1em 2em;}
+	.faq img {height: 14px; width: 14px;}
+}
+
+@media screen and (max-width: 768px) {
+	.faq {padding: 1em;}
+	.faq h2 {padding: 0 4em 0 0;}
+	.faq img {top: 1.25em; right: 1.25em;}
+	.faq p {padding-right: 1em;}
+	.faq.open p { height: auto;}
+}

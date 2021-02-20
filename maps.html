@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+    <title>OpenLayers example</title>
+  </head>
+  <body>
+    <h2>My Map</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+   /*   var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-1.4848687355795065, 51.78721320217527]),
+          zoom: 12
+        })
+      }); */
+      
+ //     import 'ol/ol.css';
+//import Feature from 'ol/Feature';
+//import Map from 'ol/Map';
+//import View from 'ol/View';
+//import {Circle} from 'ol/geom';
+//import {OSM, Vector as VectorSource} from 'ol/source';
+//import {Style} from 'ol/style';
+//import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
+
+var circleFeature = new ol.Feature({
+  geometry: new ol.geom.Circle([12127398.797692968, 4063894.123105166], 50),
+});
+circleFeature.setStyle(
+  new ol.style.Style({
+    renderer: function renderer(coordinates, state) {
+      var coordinates_0 = coordinates[0];
+      var x = coordinates_0[0];
+      var y = coordinates_0[1];
+      var coordinates_1 = coordinates[1];
+      var x1 = coordinates_1[0];
+      var y1 = coordinates_1[1];
+      var ctx = state.context;
+      var dx = x1 - x;
+      var dy = y1 - y;
+      var radius = Math.sqrt(dx * dx + dy * dy);
+
+      var innerRadius = 0;
+      var outerRadius = radius * 1.4;
+
+      var gradient = ctx.createRadialGradient(
+        x,
+        y,
+        innerRadius,
+        x,
+        y,
+        outerRadius
+      );
+      gradient.addColorStop(0, 'rgba(255,0,0,0)');
+      gradient.addColorStop(0.6, 'rgba(255,0,0,0.2)');
+      gradient.addColorStop(1, 'rgba(255,0,0,0.8)');
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, 2 * Math.PI, true);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      ctx.arc(x, y, radius, 0, 2 * Math.PI, true);
+      ctx.strokeStyle = 'rgba(255,0,0,1)';
+      ctx.stroke();
+    },
+  })
+);
+
+new ol.Map({
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM(),
+      visible: true,
+    }),
+    new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [circleFeature],
+      }),
+    }) ],
+  target: 'map',
+  view: new ol.View({
+    center: ol.proj.fromLonLat([12127398.797692968, 4063894.123105166]),
+    zoom: 19,
+  }),
+});
+      
+    </script>
+  </body>
+</html>

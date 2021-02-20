@@ -44,7 +44,7 @@ get_header();
  						<p>Leave your details below and one of our care experts will contact you at a time that suits you.</p>
 						
 						<form class="content rounded border hspot" action="<?php echo get_template_directory_uri(); ?>/form.php" data-form="0da9c75a-63e6-43b2-95b1-d2642aeb8a80">
-							<label for="firstname">First Name</label>
+							<label for="firstname">First Name</label>s
 							<input type="text" id="firstname" name="firstname" required class="border rounded" placeholder="Please enter your first name">
 							
 							<label for="lastname">Last Name</label>

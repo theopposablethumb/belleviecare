@@ -1,0 +1,10 @@
+.compare {margin-top: 3.875em;}
+.compare h2 {color: #185D6F; font-size: 3em; line-height: 1em; font-weight: 400; margin: 0.833em 0 0.667em 0;}
+.compare div.left:last-child {width: 537px; margin-left: 2.5em;}
+.compare p {margin-top: 0;}
+.compare img {width: 100%; height: auto;}
+
+@media screen and (max-width: 768px) {
+	.compare .left, .compare div.left:last-child {width: 100%;}
+	.compare div.left:last-child {margin: 2em 0 0 0;}
+}

@@ -67,7 +67,7 @@ get_header();
  					</div>
  					<div class="left">
  						<p>So how do we compare? Our customers have told us they have a criteria in mind before choosing a home care provider. We want to help you make the right decision. So here’s a handy checklist to make sure you’re asking the right questions. </p>
- 						<a class="button ghost" href="/wp-content/uploads/2020/10/BelleVie_Checklist.pdf">Download our checklist</a>
+ 						<a class="button ghost" href="/wp-content/uploads/2020/12/BelleVie-Checklist-SE.pdf">Download our checklist</a>
  					</div>
  				</div>
  			</div> 

@@ -1,0 +1,38 @@
+.standards {width: fit-content; margin-bottom: 1em; background: url('icons/stargreen.svg') no-repeat; background-position: 32px 32px; background-size: 50px; position: relative;}
+.standards .image {height: 314px;}
+.standards img {display: block;}
+.standards h2 {margin-top: 0;}
+.standards h2 span {background: none; color: #333;}
+.standards div:first-child {width: 599px; padding: 2em 2em 1.5em 6.625em; box-sizing: border-box;}
+.standards div:last-child {width: 466px;}
+
+
+.modal {background: #F8F8F5; padding: 7em 6.625em; width: 867px; box-sizing: border-box; position: absolute; top: 0; right: 0; z-index: 10;}
+.modal.show { animation: fadeIn ease 0.3s; -webkit-animation: fadeIn ease 0.3s; -moz-animation: fadeIn ease 0.3s; -o-animation: fadeIn ease 0.3s; -ms-animation: fadeIn ease 20s;}
+@keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
+@-moz-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
+@-webkit-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
+@-o-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
+@-ms-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
+
+.modal h2 {font-weight: 400; margin-bottom: 2em}
+.modal h2 span {background: linear-gradient(180deg, #F8F8F5 60%, #F8E8B1 40%);}
+.modal p {margin-bottom: 2em;}
+
+@media screen and (max-width: 1024px) {
+	.standards div:first-child {width: 55%;}
+	.standards div:nth-child(2) {width: 45%;}
+	.standards div.image {width: 100%;}
+	.standards img {width: auto;}
+	.modal {width: 80%;}
+}
+
+@media screen and (max-width: 768px) {
+	.standards div:first-child {width: 100%;}
+	.standards div:last-child {display: none;}
+	
+	.modal {padding: 4em 1em 1em 1em; width: 100%;}
+	.modal h2 {margin-bottom: 1em;}
+	.modal a.close { top: 0.5em; left: 1em; }
+	
+}

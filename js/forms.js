@@ -24,7 +24,7 @@ const closeForm = () => {
 }
 		
 const formHubSpotFieldNames = () => {
-	let fields = document.querySelectorAll('form.hspot input[type=text], form.hspot input[type=tel], form.hspot input[type=email], form.hspot textarea');
+	let fields = document.querySelectorAll('form.hspot input[type=text], form.hspot input[type=tel], form.hspot input[type=email], form.hspot input[type=hidden], form.hspot textarea');
 	let hubSpotFieldNames = [];
 	for (let i = 0; i < fields.length; i++) {
 		let name = fields[i].getAttribute("name");
@@ -34,7 +34,7 @@ const formHubSpotFieldNames = () => {
 }
 		
 const formHubSpotFieldValues = () => {
-	let fields = document.querySelectorAll('form.hspot input[type=text], form.hspot input[type=tel], form.hspot input[type=email], form.hspot textarea');
+	let fields = document.querySelectorAll('form.hspot input[type=text], form.hspot input[type=tel], form.hspot input[type=email], form.hspot input[type=hidden], form.hspot textarea');
 	let hubSpotFieldValues = []
 	for (let i = 0; i < fields.length; i++) {
 		let value = fields[i].value;
@@ -79,7 +79,7 @@ let thankYouMessage = () => {
 	const form = document.querySelector('form.hspot');
 	const div = document.createElement('div');
 	div.classList.add('result');
-	if (window.location.pathname === "/locations/south-oxfordshire-homecare/") {
+	if (window.location.pathname.includes("/locations/south-oxfordshire-homecare/")) {
 		div.innerHTML = `
 	 		<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 01235 355 570</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-SE.pdf'>Download your free brochure</a>

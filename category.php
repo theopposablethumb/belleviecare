@@ -13,18 +13,17 @@ get_header();
 	<main>
 		<div class="section">
 			<div class="content">
-				<?php 
-					$categories = get_the_category();
-					$category_id = $categories[0]->cat_ID;
-					$category = get_cat_name( $category_id );
-					$postName = $post->post_name; //Get the slug of the current page
-					if($category === 'News') {
-						echo '<h1>Latest news and events from BelleVie Care</h1>';
-					} else {
-						echo '<h1>News and events from BelleVie Care ' . $category . '</h1>';
-					}
-					echo '<p>' . $categories . '</p>';
-				?>
+				<?php
+				
+				$term = get_queried_object();
+				$postName = $term->slug; //Get the slug of the current page
+				$catTitle = ucwords(str_replace("-"," ", $postName));
+				if ($postName === 'news') {
+					echo '<h1>Latest News and Events from BelleVie</h1>';
+				} else {
+					echo '<h1>Latest News and Events from BelleVie ' . $catTitle . '</h1>';
+				};
+				?>			
 			</div>
 			<div class="content flex news">
 		<?php if ( have_posts() ) : ?>

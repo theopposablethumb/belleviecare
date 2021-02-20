@@ -1,0 +1,27 @@
+/*Teams Styles -  South Oxfordshire Team and County Durham Team pages */
+
+.page-template-teams-php .custom-html-widget:first-child {position: relative; z-index: 2;}
+.page-template-teams-php .custom-html-widget:first-child:before {content: " "; height: 20px; width: 270px; position: absolute; left: 135px; top: 3em; z-index: -1; background: linear-gradient(90deg, #FFF 8px, transparent 1%) center, linear-gradient(#FFF 8px , transparent 1%) center, #F4A4BF; background-size: 12px 12px;}
+
+.branchTeam {width: 891px; margin-bottom: 3em;}
+.branchTeam:last-child {margin-bottom: 0;}
+.branchTeam div {width: 372px; padding: 4.8em 1.5em; box-sizing: border-box;}
+.branchTeam div:last-child {width: 519px; padding: 0;}
+.branchTeam a {color: #333; background: linear-gradient(180deg, #FFF 60%, #F8E8B1 40%);}
+.branchTeam .image {height: 394px;}
+.branchTeam img {display: block;}
+
+@media screen and (max-width: 1024px) {
+	.branchTeam div {width: 39%;}
+	.branchTeam div:last-child {width: 61%;}
+	.branchTeam .image img {width: 100%; height: auto;}
+}
+
+@media screen and (max-width: 768px) {
+	.branchTeam.flex {flex-direction: column-reverse; padding: 0;}
+	.branchTeam div, .branchTeam div:last-child { width: 100%; }
+	.branchTeam div {padding: 1.5em 1em;}
+	.branchTeam div.image {padding: 0;}
+	.branchTeam .image img {width: auto; height: 100%;}
+	.branchTeam h2.large {margin: 0.75em 0;}
+}
