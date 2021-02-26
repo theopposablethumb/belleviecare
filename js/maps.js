@@ -1,4 +1,4 @@
-const locations = [{'town': 'abingdon', 'coords': [-1.2878968802672597, 51.67178136767836]}, {'town': 'henley', 'coords': [-0.9033067471332705, 51.53710356800439]}, {'town': 'oxford', 'coords': [-1.2577162566127518, 51.754024253642946]}, {'town': 'wantage', 'coords': [-1.426433149561529, 51.59018592067826]}, {'town': 'witney', 'coords': [-1.4848687355795065, 51.78721320217527]}, {'town': 'woodstock', 'coords': [-1.354313034285376, 51.84827550604427]}];
+const locations = [{'town': 'abingdon', 'coords': [-1.2878968802672597, 51.67178136767836], 'coverage': 10000}, {'town': 'henley', 'coords': [-0.9033067471332705, 51.53710356800439], 'coverage': 10000}, {'town': 'oxford', 'coords': [-1.2577162566127518, 51.754024253642946], 'coverage': 10000}, {'town': 'wantage', 'coords': [-1.426433149561529, 51.59018592067826], 'coverage': 10000}, {'town': 'witney', 'coords': [-1.4848687355795065, 51.78721320217527], 'coverage': 15000}, {'town': 'woodstock', 'coords': [-1.354313034285376, 51.84827550604427], 'coverage': 10000}];
 
 let getTown = () => {
 	let path = window.location.pathname;
@@ -8,7 +8,7 @@ let getTown = () => {
 	return town;
 }
 
-let findCoords = (town) => {
+let findTown = (town) => {
     for (let i = 0; i <= locations.length; i++) {
         if (locations[i].town === town) {
             return locations[i];
@@ -17,13 +17,18 @@ let findCoords = (town) => {
 }
 
 let getCoords = () => {
-	town = getTown();
-	let loc = findCoords(town);
+	let town = getTown();
+	let loc = findTown(town);
 	let coords = loc.coords;
 	return coords;
 }
 
-
+let getCoverage = () => {
+	let town = getTown();
+	let radius = findTown(town);
+	let coverage = radius.coverage;
+	return coverage;
+}
 
 const maps = () => {	
 	let coords = getCoords();
@@ -44,7 +49,8 @@ const maps = () => {
       
       let view = map.getView();
       let center = view.getCenter();
-      let circle = new ol.geom.Circle(center, 10000); // radius uses the units of the projection
+      let circleRadius = getCoverage();
+      let circle = new ol.geom.Circle(center, circleRadius); // radius uses the units of the projection
       let circleFeature = new ol.Feature(circle); // each shape has to be added to a feature, the feature is what takes style and gets rendered
       
  	  circleFeature.setStyle(new ol.style.Style({ 

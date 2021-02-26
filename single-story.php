@@ -27,14 +27,14 @@ get_header();
     		echo '<article class="flex stories"> <div class="halves">' . wp_get_attachment_image( $image, 'full' ) . '</div>';
     		echo '<div class="halves">';
     		echo the_content();
-    		if( get_field('page_link_text_1') ): 
+			if( get_field('page_link_text_1') ): 
 				echo '<a class="button dark" href="' . get_field('page_link_1') . '">' . get_field('page_link_text_1') . '</a>';
 			endif;
    			if( get_field('page_link_2_text') ): 
 				echo '<a class="button ghost" href="' . get_field('page_link_2') . '">' . get_field('page_link_2_text') . '</a>';
 			endif;
     		echo '</div></article>';
-
+    		
 		endwhile; // End of the loop.
 		
 		wp_reset_postdata();

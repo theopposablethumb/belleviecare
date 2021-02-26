@@ -20,7 +20,6 @@
 					<img src=<?php echo get_template_directory_uri() . '/images/cqclogo.png'; ?> alt="Care Quality Commission logo - BelleVie is regulated by the CQC" title="Regulated by the CQC" />
 				</a>
 				<img src=<?php echo get_template_directory_uri() . '/images/living-wage-employer.svg'; ?> alt="Living Wage Employer logo - BelleVie is a Living Wage Employer" title="Living Wage Employer" />
-				
 			</div>
 		</div>
 	</footer>

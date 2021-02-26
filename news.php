@@ -19,7 +19,6 @@ get_header();
 				wp_reset_postdata(); ?>
 			</div>
 		</div>
-		
 			<?php 
 				$stickies = get_option( 'sticky_posts' );
 				if ( $stickies ) {

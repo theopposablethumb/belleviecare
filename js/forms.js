@@ -79,12 +79,12 @@ let thankYouMessage = () => {
 	const form = document.querySelector('form.hspot');
 	const div = document.createElement('div');
 	div.classList.add('result');
-	if (window.location.pathname.includes("/locations/south-oxfordshire-homecare/")) {
+	if (window.location.pathname === "/locations/south-oxfordshire-homecare/")) {
 		div.innerHTML = `
 	 		<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 01235 355 570</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-SE.pdf'>Download your free brochure</a>
   	`;
-	} else if (window.location.pathname === "/locations/county-durham-homecare/" || window.location.pathname === "/locations/tyne-and-wear-homecare/") {
+	} else if (window.location.pathname === "/locations/county-durham-homecare/" || window.location.pathname === "/locations/tyne-and-wear-homecare/" || window.location.pathname === "/locations/northumberland-homecare/") {
 		div.innerHTML = `
 	    	<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 0191 313 0189</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-NE.pdf'>Download your free brochure</a>

@@ -1,5 +1,6 @@
 <?php
 /**
+Template Name: Contact Us
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Bellevie_Care
@@ -23,7 +24,7 @@ get_header();
 			<div class="content flex">
 			<?php
 				// The Query
-				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'order' => 'ASC', 'posts_per_page' => -1 ) );
+				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'meta_key'	=> 'contact_us', 'meta_value' => true, 'order' => 'ASC', 'posts_per_page' => -1 ) );
  
 				// The Loop
 				while ( $queryValues->have_posts() ) {
@@ -44,7 +45,7 @@ get_header();
  						<p>Leave your details below and one of our care experts will contact you at a time that suits you.</p>
 						
 						<form class="content rounded border hspot" action="<?php echo get_template_directory_uri(); ?>/form.php" data-form="0da9c75a-63e6-43b2-95b1-d2642aeb8a80">
-							<label for="firstname">First Name</label>s
+							<label for="firstname">First Name</label>
 							<input type="text" id="firstname" name="firstname" required class="border rounded" placeholder="Please enter your first name">
 							
 							<label for="lastname">Last Name</label>

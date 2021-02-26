@@ -19,7 +19,7 @@ get_header();
 			<div class="content flex">
 			<?php
 				// The Query
-				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'order' => 'ASC', 'posts_per_page' => -1 ) );
+				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'meta_key'=> 'contact_us', 'meta_value' => true, 'order' => 'ASC', 'posts_per_page' => -1 ) );
  
 				// The Loop
 				while ( $queryValues->have_posts() ) {

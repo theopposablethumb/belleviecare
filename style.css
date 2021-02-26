@@ -43,7 +43,6 @@ warning red Warning: #CC0400
 body {font-size: 16px; line-height: 1.5em; font-family: 'Roboto', sans-serif; font-weight: 400; background: #FAFAFA; color: #333; margin: 0; padding: 0;}
 
 h1 {font-size: 3em; font-weight: 400; line-height: 1.5em; color: #185D6F; margin: 0;}
-.dark h1 {color: #FFF;}
 h1.custom {font-size: 4em;}
 h2 {font-size: 2em; line-height: 1.5em; margin: 0 0 1em 0;}
 h2.small {font-size: 1.25em;}
@@ -71,7 +70,6 @@ strong {font-weight: 500;}
 h2 span {color: #FFC247;}
 h2.large span {display: block; width: fit-content; }
 /*p span {background: linear-gradient(180deg,rgba(255,255,255,0) 60%, #B3E2F5 40%);} */
-.content h2 {margin-top: 1em;}
 
 h4.breadcrumb {margin: 0;}
 
@@ -82,12 +80,11 @@ h4.breadcrumb {margin: 0;}
 img, .rounded {border-radius: 4px;}
 img.aligncenter {display: block; margin: 2.5em auto 0 auto;} 
 img.alignleft {float: left; margin: 0 1.75em 0 0;}
-img.alignright {float: right; margin: 0 0 0 1.75em;}
 .shadow {box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);}
 .border {border: 1px solid #E4E4E4;}
 
-.whitebg {background-color: #FFF;}
-.offwhitebg {background-color: #FAFAFA;}
+.whitebg {background: #FFF;}
+.offwhitebg {background: #FAFAFA;}
 
 .button {font-size: 1em; font-weight: 500; padding: 0.625em 2em; display: inline-block; margin: 1.5em 1.5em 0 0; border-radius: 8px; border: none;}
 .dark {background: #185D6F; color: #FFF;}
@@ -102,7 +99,7 @@ article .button.ghost {margin-left: 1em;}
 .button.ghost:focus:before {border: 1px solid #BA7800;}
 .borders:before { content: " "; position: absolute; z-index: -1; top: 4px; left: 4px; right: 4px; bottom: 4px; border: 4px solid #2D9CDB; }
 a.chevron {display: block; font-size: 1.25em; background: url('icons/chevron-yellow.svg') no-repeat; background-size: 20px; background-position: center right; margin-left: 1em; padding: 1em 2em 1em 0; width: fit-content;}
-
+a.chevron::before {display: none;}
 .sticky .button.ghost, .sticky .button.ghost:hover {border: none;}
 
 .openNav {display: none;}
@@ -114,8 +111,8 @@ footer {background: #185D6F; color: #FFF; padding-bottom: 6.25em;}
 .section {overflow: auto;}
 .content {max-width: 1255px; margin: 2.375em auto 0 auto; box-sizing: border-box;}
 footer { margin-top: 4.75em; }
-.page-template-local-landing-page footer {margin: 0;}
 footer .content {margin: 0 auto; position: relative;}
+.page-template-local-landing-page footer {margin: 0;}
 article {width: 100%;}
 
 .flex {display: flex; flex-wrap: wrap;}
@@ -188,7 +185,7 @@ a.instagram {background: url('icons/instagram.svg') no-repeat; background-size: 
 a.linkedin {background: url('icons/linkedin.svg') no-repeat; background-size: 24px;}
 footer a[href="/privacy-policy"] {font-size: 0.875em; float: none; clear: left; display: block; margin-top: 5.75em;}
 footer a[href="/cookie-policy-uk"] {font-size: 0.875em; display: block; margin-top: 0.5em;}
-	
+
 footer .content .logo {position: absolute; bottom: 0; right: 0;}
 footer .content .logo a {display: block; margin: 0.75em 2.5em 0 0;}
 footer .content .logo img {width: 150px; height: auto;}
@@ -216,7 +213,6 @@ form p.error {margin-top: 0.5em; color: #CC0300;}
 
 .videoWrapper {position: relative; width: 50%; padding-bottom: 30.25%; /* 16:9 */ height: 0; margin: 2em auto 0 auto;}
 .videoWrapper iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
-.cmplz-placeholder-1.videoWrapper {padding: 0;}
 
 .notifications {text-align: center; background: #D3F1F1;}
 .notifications .content {margin: 1.5em auto;}
@@ -232,13 +228,6 @@ form p.error {margin-top: 0.5em; color: #CC0300;}
 .hero img {display: block;}
 .hero div:nth-child(2) {width: fit-content; border-radius: 10px; border: 12px solid #185D6F; position: relative; z-index: 2;}
 .hero:after {content: " "; background: #124654; height: 100%; width: 33%; position: absolute; top: 0; right: 0; z-index: 1;} 
-
-.hero div.promo {position: absolute; top: 16px; right: 5em; border-radius: 50%; width: 190px; height: 190px; border: 4px solid #185D6F; background: #D3F1F1; transform: rotate(12deg); animation: rotate 2s;}
-.hero div.promo p {padding: 0; font-size: 1.25em; border-radius: 50%; height: 100%; text-align: center; margin: 0; color: #185D6F;}
-.hero div.promo a {color: #185D6F;}
-.hero div.promo::before {content: ""; float: left; height: 100%; width: 50%; shape-outside: polygon( 0 0, 98% 0, 50% 6%, 23.4% 17.3%, 6% 32.6%, 0 50%, 6% 65.6%, 23.4% 82.7%, 50% 94%, 98% 100%, 0 100%); shape-margin: 3%;}
-.hero div.promo p::before { content: ""; float: right; height: 100%; width: 50%; shape-outside: polygon( 2% 0%, 100% 0%, 100% 100%, 2% 100%, 50% 94%, 76.6% 82.7%, 94% 65.6%, 100% 50%, 94% 32.6%, 76.6% 17.3%, 50% 6%); shape-margin: 3%;}
-@keyframes rotate { 0%  {transform: rotate(12deg);} 50% {transform: rotate(5deg);} 100% {transform: rotate(12deg);} }
 
 .section.whitebg .custom-html-widget:first-child {position: relative; z-index: 2;}
 .section.whitebg .custom-html-widget:first-child:before {content: " "; height: 60px; width: 280px; position: absolute; right: -25px; bottom: 60px; z-index: -1; background: linear-gradient(90deg, #FFF 8px, transparent 1%) center, linear-gradient(#FFF 8px , transparent 1%) center, #D3F1F1; background-size: 12px 12px;}
@@ -277,8 +266,13 @@ article.services.icons {padding-top: 5.75em;}
 .story {margin-top: 2.5em;}
 .story:first-child {margin-top: 0;}
 .story:nth-child(odd) div.halves:first-child {order: 2;}
-.story h3 {padding: 1em 2em 0 2em;}
 .story p {padding: 1em 2.5em;}
+
+.cover {position: relative;}
+.cover p {position: absolute; top: 1.5em; left: 0; padding: 0.75em 1.5em; min-width: 186px; background: rgba(255, 255, 255, 0.7);}
+.cover.stories p {font-size: 1.25em;}
+.cover a {color: #185D6F;}
+.cover a:hover p {text-decoration: underline;}
 
 .imageLeft {margin-bottom: 2em;}
 .imageLeft:last-of-type{margin-bottom: 0;}
@@ -286,12 +280,6 @@ article.services.icons {padding-top: 5.75em;}
 .imageLeft div.image {width: 33%; height: 100%; padding: 0;}
 .imageLeft .image img {width: 100%; height: auto;}
 .imageLeft .button.ghost {margin: 1.5em 0 1.5em 0;}
-
-.cover {position: relative;}
-.cover p {position: absolute; top: 1.5em; left: 0; padding: 0.75em 1.5em; min-width: 186px; background: rgba(255, 255, 255, 0.7);}
-.cover.stories p {font-size: 1.25em;}
-.cover a {color: #185D6F;}
-.cover a:hover p {text-decoration: underline;}
 
 .faq {padding: 1.5em 2.5em; box-sizing: border-box; margin-bottom: 1.5em; position: relative;}
 .faq h2 {color: #185D6F; margin: 0;}
@@ -328,6 +316,7 @@ article.services.icons {padding-top: 5.75em;}
 .standards div:last-child {width: 466px;}
 
 .modal {background: #F8F8F5; padding: 7em 6.625em; width: 867px; box-sizing: border-box; position: absolute; top: 0; right: 0; z-index: 10;}
+.standards:last-of-type .modal {position: absolute; bottom: 0; right: 0; z-index: 10; height: fit-content;} 
 .modal.show { animation: fadeIn ease 0.3s; -webkit-animation: fadeIn ease 0.3s; -moz-animation: fadeIn ease 0.3s; -o-animation: fadeIn ease 0.3s; -ms-animation: fadeIn ease 20s;}
 @keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
 @-moz-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
@@ -341,7 +330,7 @@ article.services.icons {padding-top: 5.75em;}
 .modal a.close, .banner a.close {position: absolute; top: 1em; left: 2em; display: block; padding: 1em 1.5em; background: url('icons/close.svg') center left no-repeat; background-size: 16px 12px;}
 
 .branchTeam {width: 891px; margin-bottom: 3em;}
-.branchTeam:last-child {margin-bottom: 0;}
+.branchTeam:last-child {margin-bottom: 1em;}
 .branchTeam div {width: 372px; padding: 4.8em 1.5em; box-sizing: border-box;}
 .branchTeam div:last-child {width: 519px; padding: 0;}
 .branchTeam a {color: #333; background: linear-gradient(180deg, #FFF 60%, #F8E8B1 40%);}
@@ -356,7 +345,7 @@ a.email {padding: 0.5em 0 0.5em 3em; background: url('icons/mail-greencircle.svg
 .branchListing h2 {line-height: inherit; padding: 0.5em 0;}
 .branchListing p {padding: 1em 0;}
 .branchListing h2, .branchListing p, .branchListing a {margin: 0 2em 0 0;}
-.page-pricing .branchListing:last-child a, .page-home-care .branchListing:last-child a {font-size: 1em;}
+.page-pricing .branchListing:last-child a, .page-home-care .branchListing:last-child a {font-size: 1em;}{font-size: 1em;}
 
 .compare {margin-top: 3.875em;}
 .compare h2 {color: #185D6F; font-size: 3em; line-height: 1em; font-weight: 400; margin: 0.833em 0 0.667em 0;}
@@ -450,7 +439,6 @@ td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 /* May want to fix this for all .thirds */ 
 .news .thirds {padding: 0;}
 .news .thirds h2 {padding: 0 1em; margin: 1em 0 0 0;}
-.news .thirds h3 {padding: 0 1.25em; margin: 1em 0 0 0;}
 .news .thirds p {padding: 0 1.5em;}
 .news .image img {height: auto; width: 100%;}
 .category-sticky .image {height: 500px;}
@@ -473,24 +461,22 @@ td:nth-child(even) {padding: 1em 4.687em 1em 3em;}
 .page-template-default .news article p {font-size: 1em;}
 
 article.thumb {margin-bottom: 1.5em;}
-.thumb .image {width: 200px; height: 130px;}
+article.thumb div {width: 80%; padding-bottom: 1em;}
+article.thumb div.image {width: 20%; height: auto; padding: 0;}
 article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
 article.thumb p.small {padding: 0 1em; color: #666;}
 
-article.titles p.publishDate {padding: 0;}
-
 article footer {background: none; color: #333; display: flex; margin-top: 1.5em; padding: 0;}
-article footer p {font-size: 1em; color: #666; margin-right: 1em; padding-right: 1em; border-right: 1px solid #333;}
+	article footer p {font-size: 1em; color: #666; margin-right: 1em; padding-right: 1em; border-right: 1px solid #333;}
 article footer p:last-of-type {border-right: none;}
 article footer a {color: #BA7800;}
 
 .local {position: relative; z-index: 2;}
 .local li {position: relative; overflow: visible; backface-visibility: hidden; -webkit-column-break-inside: avoid; column-break-inside: avoid; transform: translate3d(0,0,0) ;}
 .tooltip.hidden {display: none;}
-.tooltip {display: inline; width: 400px; padding: 0.5em 1em 1em 1em; position: absolute; bottom: 1.8em; left: 0; z-index: 3; transform: translateZ(1em) }
+.tooltip {display: inline; width: 400px; padding: 0 1em 1em 1em; position: absolute; bottom: 1.8em; left: 0; z-index: 3; transform: translateZ(1em) }
 .tooltip p {font-size: 0.9em;}
 .tooltip::after {content: " "; position: absolute; bottom: -10px; width: 0; height: 0; border-style: solid; border-width: 17px 10px 0 10px; border-color: #FFF transparent transparent transparent;}
-.tooltip a.close {position: absolute; top: 0.2em; right: 1em;}
 
 .covid {position: fixed; top: 0; left: 0; z-index: 6; height: 100vh; width: 100vw; background: rgba(25, 25, 25, 0.4); backdrop-filter: blur(4px); }
 .covid .pop {background: #f5f5f5; margin: 20vh auto 0 auto; width: 50%; border-radius: 4px; padding: 1.5em; border-color: #185D6F; position: relative;}
@@ -645,13 +631,11 @@ article footer a {color: #BA7800;}
 	.hero a.button {margin-left: 1em; margin-right: 1em;}
 	
 	.hero img {height: auto; width: 100%; position: relative; top: 0; left: 0; transform: translate(0 ,0);}
-	
-	.hero div.promo {position: relative; transform: none; width: 100%; top: 0; right: 0; animation: none;}
 	.notifications .button {display: block; margin-top: 1em;}
 	
 	.image img {width: 100%; height: auto;}
 	
-	img.alignleft, img.alignright {float: none; display: block; margin: 0 auto 1.5em auto;}
+	img.alignleft {float: none; display: block; margin: 0 auto 1.5em auto;}
 	.button {padding: 0.5em 1.65em;}
 	
 	.quarters {width: 95%; margin: 0 auto 2.5em auto;}
@@ -758,6 +742,12 @@ article footer a {color: #BA7800;}
 	article footer {display: block; margin-top: 3em;}
 	article footer p {border-right: none;}
 	
+	article.thumb {padding: 0;}
+	article.thumb .image {width: 100%; height: 150px;}
+	article.thumb .image img {height: auto; width: 100%;}
+	article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
+	article.thumb p.small {margin-bottom: 1em;}
+	
 	footer .content {width: 90%;}
 	footer ul.menu {flex-wrap: wrap;}
 	footer ul.menu li {width: 50%; margin-bottom: 1.5em;}
@@ -777,23 +767,19 @@ article footer a {color: #BA7800;}
 	
 	footer .fifths:first-child {width: 100%;}
 	
-	.page-contact-us .steps:first-child, .page-contact-us .steps:nth-child(2), .page-contact-us .steps:nth-child(3) {background-position: center 16px;}
-
-	/* local news styles */
-	article.thumb, article.thumbLarge {padding: 0;}
-	article.thumb .image {width: 100%; height: 150px;}
-	article.thumb .image img {height: auto; width: 100%;}
-	article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
-	article.thumb p.small {margin-bottom: 1em;}
-
+	.page-contact-us .steps:first-child, .page-contact-us .steps:nth-child(2), .page-contact-us 		       .steps:nth-child(3) {background-position: center 16px;}
+	
 	.imageLeft div {width: 100%; padding: 0 1em 0 1em; box-sizing: border-box;}
 	.imageLeft div.image {width: 100%; height: 250px; padding: 0;}
 	.imageLeft .image img {width: 100%; height: auto;}
-
-	.tooltip {width: 80%; left: -1.4em;}
+	
+	.tooltip {width: 80%; left: -1.4em; }
 	.tooltip::after {left: 40%; }
 	
+	.callUs div {margin: 0 auto;}
+	.callUs .image {margin-bottom: 1.5em}
 	
 	.covid .pop {width: 90%; box-sizing: border-box; }
 	.covid h3 {margin-top: 1.8em;}
+	
 }

@@ -35,37 +35,6 @@ get_header();
 						</ul>
 					</div>
  				</div>
- 			</div>
- 			<div class="section dark">
-				<div class="content">
-					<div class="widget_text content flex centered padded">
-						<h2 class="large">How BelleVie’s costs compare to other types of care in the North East</h2>
-						<div class="textwidget custom-html-widget">
-							<table>
-								<tbody>
-									<tr>
-										<th></th>
-										<th><h4>Bellevie</h4></th>
-										<th><h4>Care Home</h4></th>
-									</tr>
-									<tr>
-										<td><p class="small">Average Monthly Cost</p></td>
-										<td><p>~£1600*</p></td>
-										<td><p>£2700**</p></td>
-									</tr>
-									<tr>
-										<td colspan="4">
-											<p class="small">*Pricing is for approx. 2 visits a day, seven days a week. BelleVie's figures can vary depending on needs.</p>
-											 <p class="small">**Source: Fees paid by self-funders: LaingBuisson surveys of care homes 2018-19, County Durham</p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section">
  				<div class="content">
 					<p style="margin-bottom: 2em;">If you are unsure about which type of care is best for you, contact us today to speak to a member of our team. If you would prefer to discuss your needs in person, you can book a free, initial conversation with one of our Trusted Assessors at a day and time that suits you. They can advise you on your care options, set your mind at ease, and talk about how we can support. </p>
 				</div>
@@ -76,7 +45,7 @@ get_header();
 				<h2 class="light">Talk to us to find out how we can support you</h2>	
 				<?php
 				// The Query
-				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'order' => 'ASC', 'posts_per_page' => -1 ) );
+				$queryValues = new WP_Query( array( 'post_type' => 'branch', 'meta_key' => 'contact_us', 'meta_value' => true, 'order' => 'ASC', 'posts_per_page' => -1 ) );
  
 				// The Loop
 				while ( $queryValues->have_posts() ) {

@@ -70,7 +70,7 @@ get_header();
 				wp_reset_postdata(); ?>
 				</div>
 			</div>
-					
+		
 	</main>
 
 

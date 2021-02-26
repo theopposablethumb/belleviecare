@@ -1,12 +1,7 @@
 <?php
 /**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
+
+Template Name: Careers
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Bellevie_Care
@@ -26,7 +21,7 @@ get_header();
 		</div>
 			
 			<div class="section whitebg">		
-				<div class="content flex">
+				<div class="content">
  					<?php dynamic_sidebar( 'row-3'); ?>
  				</div>
  			</div> 

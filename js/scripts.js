@@ -3,14 +3,12 @@ let covid = () => {
     let tel = covidNumber();
     const covidPop = document.createElement('div');
     covidPop.classList.add('covid');
-    covidPop.innerHTML = `
-        <div class="pop shadow border">
+    covidPop.innerHTML = `<div class="pop shadow border">
             <a class="close">Close</a>
-            <h3>UK Lockdown</h3>
+            <h3>How we are keeping people safe during lockdown</h3>
             <p>In line with the government guidelines, we have been supporting people to live well in their own homes since the beginning of the pandemic, and will continue to do so during the lockdown. We'd like to thank our amazing key workers for all of their hard work and support to make this happen.</p> 
             <p>As always, our priority is the wellbeing and safety of the people we support, and our Wellbeing Support Workers. If you are concerned about home support during the pandemic, please call us on ${tel} to find out more about our response to Covid-19.</p>
-        </div>
-    `;
+        </div>`;
     main.appendChild(covidPop);
     covidVaccine();
 }
@@ -38,14 +36,13 @@ let displayCovid = () => {
     let prevDomain;
     if (document.referrer) 
         {prevDomain = (new URL(document.referrer)).hostname;}
-        console.log(prevDomain);
-    if (prevDomain === null || prevDomain !== domain) {
-        console.log(prevDomain); 
+    if (prevDomain === null || prevDomain !== domain) { 
         covid();
     } else{
         return null;
     }
 }
+
 
 let year = () => {
     document.querySelector(".copyright span").innerHTML = new Date().getFullYear();
@@ -122,21 +119,20 @@ let replaceCheckList = (area) => {
     checkListLink.setAttribute('href', '/wp-content/uploads/2020/12/BelleVie-Checklist-' + area);
 }
 
-//Refactor this as a switch statement
 let contextualPhoneNumbers = () => {
     window.sessionStorage.setItem('previousPage', document.referrer);
     let prev = window.sessionStorage.getItem('previousPage');
     let current = window.location.href;
     if (prev.includes('oxford') && current.includes('what-we-offer')) {
         replacePhoneNumber('01235 355 570');
-        replaceCheckList('SE');
+		replaceCheckList('SE');
     } else if (prev.includes('durham') && current.includes('what-we-offer')) {
         replacePhoneNumber('0191 313 0189');
-        replaceCheckList('NE');
+		replaceCheckList('NE');
     } else if (prev.includes('tyne') && current.includes('what-we-offer')) {
         replacePhoneNumber('0191 313 0189');
-        replaceCheckList('NE');
-    } else if(prev.includes('northumberland') && current.includes('what-we-offer')) {
+		replaceCheckList('NE');
+	} else if(prev.includes('northumberland') && current.includes('what-we-offer')) {
         replacePhoneNumber('0191 313 0189');
         replaceCheckList('NE');
     } else if (current.includes('durham') || current.includes('tyne') || current.includes('northumberland')) {
@@ -145,7 +141,7 @@ let contextualPhoneNumbers = () => {
     } else if (prev.includes('oxford') && current.includes('home-care')) {
         replacePhoneNumber('01235 355 570');
         document.querySelector('.section a[href^=tel]').innerHTML = '01235 355 570';
-    }
+	}
 }
     		
 let makeItSo = () => {
@@ -157,7 +153,7 @@ let makeItSo = () => {
 		saveService();
 		scrollToService();
 		contextualPhoneNumbers();
-		//displayCovid();
+		displayCovid();
  		console.log("This website crafted by hand by Brendan Meachen. Want your own custom website? Contact me - www.brendanmeachen.com");
  	});
 };

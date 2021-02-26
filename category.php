@@ -19,7 +19,7 @@ get_header();
 				$postName = $term->slug; //Get the slug of the current page
 				$catTitle = ucwords(str_replace("-"," ", $postName));
 				if ($postName === 'news') {
-					echo '<h1>Latest News and Events from BelleVie</h1>';
+					echo '<h1>Latest News and Events from BelleVie Care</h1>';
 				} else {
 					echo '<h1>Latest News and Events from BelleVie ' . $catTitle . '</h1>';
 				};

@@ -1,7 +1,7 @@
 <?php
 /**
 
-Template Name: Younger People
+Template Name: Exercise and Fitness
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Bellevie_Care
@@ -12,17 +12,17 @@ get_header();
 <?php /*  */ ?>
 
 	<main>
-		
 		<div class="section dark">
-				<div class="content"><script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
+				<div class="content">
+					<h2 class="light large">Book your complimentary fitness session*</h2>
+					<p>Please leave your name and email below and we will contact you to organise a day and time suitable for you.</p>
 					<form class="content rounded border hspot" data-form="cb310c4d-38d9-4d64-affb-aba244dc7e2b">
-						<h2 class="light green">Book a complimentary fitness session*</h2>
-						<p>Please leave your name and phone number below and we will contact you to organise a day and time suitable for you.</p>
+						
 						<label for="firstname">First Name</label>
 						<input type="text" id="firstname" name="firstname" required class="border rounded" placeholder="Please enter your first name">
 						<label for="lastname">Last Name</label>
 						<input type="text" id="lastname" name="lastname" required class="border rounded" placeholder="Please enter your surname">
-						<label for="email">Email</label>
+						<label for="mobilephone">Email</label>
 						<input type="email" id="email" name="email" required class="border rounded" placeholder="Please enter your email address">
 						<div class="g-recaptcha" data-sitekey="6Lejvd8ZAAAAAO5PbIUn5ofoIByWu86dj1yHHotH"></div>
 						<input type="submit" value="Submit" class="button light">
@@ -31,7 +31,7 @@ get_header();
 					</form>
 				</div>
 			</div>
-
+		
 		<div class="section">
 			<div class="content">
 			<?php while ( have_posts() ) : the_post();
@@ -40,7 +40,7 @@ get_header();
 				wp_reset_postdata(); ?>
 				</div>
 			</div>
-						
+			
 			<div class="section notifications">
 				<div class="content">
 				<p><strong>COVID-19 notice:</strong> We are using the necessary protective equipment and are adhering to the latest government guidelines.</p><p>Our experienced trainers are also tested on a regular basis. <a href="/covid-19">Here's what we're doing in response to Covid-19</a></p>

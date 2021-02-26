@@ -3,7 +3,6 @@ let locationToolTip = () => {
     let toolTip = document.querySelector('.tooltip');
     let toolTipText = document.querySelector('.tooltip p')
     let toolTipLocal = toolTipText.textContent;
-    let toolTipClose = document.querySelector('.tooltip .close');
     for(let i = 0; i < locations.length; i++) {
         let location = locations[i];
         let locationName = locations[i].textContent;
@@ -16,8 +15,8 @@ let locationToolTip = () => {
             toolTip.classList.remove('hidden');
             this.appendChild(toolTip);
             this.style.cssText = 'z-index: 2';
-        });
-    };
+        })
+    }
 }
     	
 let maximumWarp = () => {

@@ -75,33 +75,55 @@ get_header();
  		</div>
 
 
-		<div class="section">
-			<div class="content centered">
-			
-				<h2 class="light">We value our people - meet your local team in <?php echo ucfirst($postName); ?></h2>
-				<?php dynamic_sidebar( 'row-1'); ?>
-				
-			</div>
-			<div class="content flex justifyCenter">
-			<?php
+		<?php
 				// The Query
  				$queryValues = new WP_Query( array( 'post_type' => 'colleague', 'category_name' => $postName, 'posts_per_page' => -1 ) ); //magic!
 				// The Loop
-				while ( $queryValues->have_posts() ) {
-    				$queryValues->the_post();
-    				
-    				$imageID = get_field('profile_pic');
-					$image = wp_get_attachment_image_src( $imageID, 'full' );
-					$alt_text = get_post_meta($imageID , '_wp_attachment_image_alt', true);
-					echo '<article class="quarters border rounded staff"><div class="image"><img src="' . $image[0] . '" alt="' . $alt_text . '" /></div>';
-    				echo '<div><h4>' . get_field('staff_name') . '</h4>';
-    				echo '<p class="jobTitle">' . get_field('job_title') . '<p>';		
-    				echo '<p class="hidden">' . get_field('profile') . '</p></div></article>';
-				}
+				if ($queryValues->have_posts()) :
+					echo '<div class="section"><div class="content centered"><h2 class="light">We value our people - meet your local team in ' . ucfirst($postName) . '</h2></div><div class="content flex justifyCenter">';
+					while ( $queryValues->have_posts() ) : $queryValues->the_post();
+    					$imageID = get_field('profile_pic');
+						$image = wp_get_attachment_image_src( $imageID, 'full' );
+						$alt_text = get_post_meta($imageID , '_wp_attachment_image_alt', true);
+						echo '<article class="quarters border rounded staff"><div class="image"><img src="' . $image[0] . '" alt="' . $alt_text . '" /></div>';
+    					echo '<div><h4>' . get_field('staff_name') . '</h4>';
+    					echo '<p class="jobTitle">' . get_field('job_title') . '<p>';		
+    					if(get_field('profile')) { echo '<p class="hidden">' . get_field('profile') . '</p></div>'; }
+						echo '</article>';
+					endwhile;
+					echo '</div></div>';
+				endif;
 				wp_reset_postdata(); ?>
-				</div>
+		
+	<div class="section whitebg">
+				<?php $postName = $post->post_name; //Get the slug of the current page
+				// The Query
+				
+				$catTitle = ucwords(str_replace("-"," ", $postName));
+				$queryNews = new WP_Query( array( 'category_name' => $postName, 'post_type' => 'post', 'posts_per_page' => 3 ) ); //magic!
+
+				if ( $queryNews->have_posts() ) :
+					echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $catTitle . '</h2></div>';
+					echo '<div class="content news">';
+    				while ( $queryNews->have_posts() ) : $queryNews->the_post();
+        				echo '<article class="thumb flex rounded border offwhitebg"><div class="image">';
+						echo the_post_thumbnail();
+						echo '</div><div>';
+						echo the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+						echo '<p class="small">Posted on ' . get_the_date() . ' by ' . get_the_author_meta('display_name') . '</p>';
+						echo '</div></article>';
+        			endwhile; 
+        			echo '</div>';
+    			endif;
+    			wp_reset_postdata();
+				?>
+		</div>
+		<div class="section">
+			<div class="content">
+				<?php dynamic_sidebar('reviews'); ?> 
 			</div>
 		</div>
+
 		<div class="section whitebg">
 			<div class="content centered">
 				<h2 class="light">Booking a free consultation is easy!</h2>
@@ -127,7 +149,7 @@ get_header();
 					<div class="fullWidth flex callUs">
 					<div>
 						<div class="image shadow">
-						<img src="http://localhost:8888/wp-content/uploads/2021/02/Jill.jpg" />
+						<img src="https://www.belleviecare.co.uk/wp-content/uploads/2021/01/Jill.jpg" />
 						</div>
 					</div>
 					<div>
