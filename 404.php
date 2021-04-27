@@ -14,7 +14,7 @@ get_header();
 		<div class="section">
 			<div class="content">
 				<h1>Whoops, that link is broken</h1>
-				<p>Don't worry, you can still view our WellBeing services here. We're currently helping people live their best life in <a href="/locations/south-oxfordshire-homecare/">South Oxfordshire</a> and the <a href="/locations/county-durham-homecare/">North East.</a></p>
+				<p>Don't worry, you can still view our WellBeing services here. We're currently helping people live their best life in <a href="/locations/oxfordshire-homecare/">Oxfordshire</a> and the <a href="/locations/county-durham-homecare/">North East.</a></p>
 			</div>
 			<div class="content flex">
 			<?php

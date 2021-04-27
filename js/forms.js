@@ -79,7 +79,7 @@ let thankYouMessage = () => {
 	const form = document.querySelector('form.hspot');
 	const div = document.createElement('div');
 	div.classList.add('result');
-	if (window.location.pathname === "/locations/south-oxfordshire-homecare/")) {
+	if (window.location.pathname === "/locations/oxfordshire-homecare/") {
 		div.innerHTML = `
 	 		<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 01235 355 570</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-SE.pdf'>Download your free brochure</a>
@@ -88,6 +88,11 @@ let thankYouMessage = () => {
 		div.innerHTML = `
 	    	<p>Thank you for downloading our brochure. If you have any questions or would like to discuss your home care needs with a member of the team call us today on 0191 313 0189</p>
     		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2020/11/Brochure-BelleVie-NE.pdf'>Download your free brochure</a>
+  		`;
+	} else if (window.location.pathname === "/younger-people/") {
+		div.innerHTML = `
+	    	<p>Thank you for downloading our brochure. If you have any questions or would like to discuss how BelleVie can support you call us today on 01235 355 570 if you're in Oxfordshire or 0191 313 0189 if you're in the North East</p>
+    		<a class='button light' href='http://www.belleviecare.co.uk/wp-content/uploads/2021/04/Supporting-Young-Adults.pdf'>Download your free brochure</a>
   		`;
 	} else {
 		

@@ -37,7 +37,28 @@ get_header();
 					<article class="branchListing content flex justifyLeft"><a class="email" href="mailto: info@belleviecare.co.uk">info@belleviecare.co.uk</a><p>Send us an email, we usually respond within 24 hours.</p>
 				</div>
 			</div>
-			
+		
+		<div class="section">
+			<div class="content">
+				<h2 class="large">What happens next</h2>
+			</div>
+			<div class="content flex">
+			<?php
+				// The Query
+				$queryServices = new WP_Query( array( 'post_type' => 'steps', 'orderby' => 'ID', 'order' => 'ASC', 'posts_per_page' => 3 ) );
+ 
+				// The Loop
+				while ( $queryServices->have_posts() ) {
+    				$queryServices->the_post();
+    				echo '<article class="thirds border rounded steps"><p class="small">' . get_field( 'step' ) . '</p>';
+    				echo '<h4>' . get_the_title() . '</h4>';
+    				
+    				echo the_content() . '</article>';
+				}
+				wp_reset_postdata(); ?>
+				</div>
+			</div>
+
 			<div class="section dark contact">		
 				<div class="content">
  					<h2>If now isn’t a good time…</h2>			
@@ -70,28 +91,6 @@ get_header();
 					</div>
  				</div>
 		</div>
-		
-		<div class="section">
-			<div class="content">
-				<h2 class="large">What happens next</h2>
-			</div>
-			<div class="content flex">
-			<?php
-				// The Query
-				$queryServices = new WP_Query( array( 'post_type' => 'steps', 'orderby' => 'ID', 'order' => 'ASC', 'posts_per_page' => 3 ) );
- 
-				// The Loop
-				while ( $queryServices->have_posts() ) {
-    				$queryServices->the_post();
-    				echo '<article class="thirds border rounded steps"><p class="small">' . get_field( 'step' ) . '</p>';
-    				echo '<h4>' . get_the_title() . '</h4>';
-    				
-    				echo the_content() . '</article>';
-				}
-				wp_reset_postdata(); ?>
-				</div>
-			</div>
-
 	</main>
 
 

@@ -12,23 +12,15 @@ get_header();
 ?>
 
 	<main>
-		<div class="section notifications">
-			<div class="content">
-		<?php
-				// The Query
-				$queryServices = new WP_Query( array( 'category_name' => 'notification', 'posts_per_page' => 1 ) );
- 
-				// The Loop
-				while ( $queryServices->have_posts() ) {
-    				$queryServices->the_post();
-    				echo the_content();
-				}
-				wp_reset_postdata(); ?>
-			</div>
-		</div>
+		
 		<div class="section hero">
 			<div class="content flex">
 				<?php dynamic_sidebar( 'hero'); ?>
+			</div>
+		</div>
+		<div class="section notifications">
+			<div class="content">
+		<?php echo '<p><strong>Award Winners:</strong> <a href="' . esc_url( get_permalink( 1033 ) ) . '" rel="bookmark">' . get_the_title( 1033 ) . '</a></p>'; ?>
 			</div>
 		</div>
 		
@@ -85,6 +77,17 @@ get_header();
 				</div>
 			</div>
 			
+			<div class="section whitebg">
+				<?php
+					echo '<div class="content"><h2 class="large green">2021 Home Care Award Winners</h2><p>BelleVie Care won the ‘Best start-up home care service or new franchise’ Award. Read more below</p></div>';
+					echo '<div class="content news"><article class="thumb flex rounded border offwhitebg"><div class="image">';
+					echo '<img src="' . get_the_post_thumbnail_url( 1033 ) . '" />';
+					echo '</div><div>';
+					echo '<h2><a href="' . esc_url( get_permalink( 1033 ) ) . '" rel="bookmark">' . get_the_title( 1033 ) . '</a></h2>';
+					echo '<p class="small">Posted on ' . get_the_date( 'l jS \of F Y', 1033 ) . ' by ' . get_the_author_meta( 'display_name', 3 ) . '</p></div></article></div>'; 
+				?>
+			</div>
+
 			<div class="section whitebg">
 				<div class="content centered">
 

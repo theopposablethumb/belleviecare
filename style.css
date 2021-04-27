@@ -67,7 +67,7 @@ p a:hover {text-decoration: none;}
 strong {font-weight: 500;}
 .small {font-size: 1em;}
 
-h2 span {color: #FFC247;}
+h2 span, .hero p span {color: #FFC247;}
 h2.large span {display: block; width: fit-content; }
 /*p span {background: linear-gradient(180deg,rgba(255,255,255,0) 60%, #B3E2F5 40%);} */
 
@@ -75,6 +75,8 @@ h4.breadcrumb {margin: 0;}
 
 .centered {text-align: center}
 .centered h1, .centered h2, .centered h3, .centered h4 {margin-left: auto; margin-right: auto;}
+.centered ul {display: inline-block; text-align: left}
+.page-id-215 .centered img {margin: 2em 1em 0.5em 1em; }
 .padded {padding: 0 6em;} 
 
 img, .rounded {border-radius: 4px;}
@@ -105,15 +107,18 @@ a.chevron::before {display: none;}
 .openNav {display: none;}
 
 header, main, footer {width: 100%; box-sizing: border-box;}
-header {position: fixed; z-index: 3; top: 0; padding: 1.25em 0 0 0; background: #FAFAFA;}
+header {position: fixed; z-index: 3; top: 0; padding: 1.25em 0 0 0; background: #FAFAFA; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);}
 main {margin: 5.8em 0 0 0; min-height: 57vh;}
 footer {background: #185D6F; color: #FFF; padding-bottom: 6.25em;}
 .section {overflow: auto;}
 .content {max-width: 1255px; margin: 2.375em auto 0 auto; box-sizing: border-box;}
 footer { margin-top: 4.75em; }
 footer .content {margin: 0 auto; position: relative;}
-.page-template-local-landing-page footer {margin: 0;}
+.page-template-local-landing-page footer, .single-job footer {margin: 0;}
+.single-job .whitebg {margin-top: 3em; padding-bottom: 3em;}
 article {width: 100%;}
+
+.hero .button.mobile {display: none;}
 
 .flex {display: flex; flex-wrap: wrap;}
 .justifyLeft {justify-content: left;}
@@ -286,7 +291,7 @@ article.services.icons {padding-top: 5.75em;}
 .faq h2:hover {cursor: pointer;}
 .faq p {padding-right: 5em;}
 .faq.closed p {height: 0; overflow: hidden; margin: 0;}
-.faq.open p { height: 7.5em; -webkit-transition: height 0.3s ease-in; -moz-transition: height 0.3s ease-in; -o-transition: height 0.3s ease-in; -ms-transition: height 0.3s ease-in; transition: height 0.3s ease-in;  animation: 0.3s delay-overflow;}
+.faq.open p { height: 8.5em; -webkit-transition: height 0.3s ease-in; -moz-transition: height 0.3s ease-in; -o-transition: height 0.3s ease-in; -ms-transition: height 0.3s ease-in; transition: height 0.3s ease-in;  animation: 0.3s delay-overflow;}
 @keyframes delay-overflow { from { overflow: hidden; } }
 
 .faq img {position: absolute; top: 1.375em; right: 3.25em; transition-duration: 0.3s; transition-property: transform; }
@@ -308,6 +313,7 @@ article.services.icons {padding-top: 5.75em;}
 .local ul {column-count: 4; column-fill: balance; column-gap: 0; margin-top: 2em;}
 
 .standards {width: fit-content; margin-bottom: 1em; background: url('icons/stargreen.svg') no-repeat; background-position: 32px 32px; background-size: 50px; position: relative;}
+.standards:last-of-type {margin-bottom: 9em}
 .standards .image {height: 314px;}
 .standards img {display: block;}
 .standards h2 {margin-top: 0;}
@@ -315,7 +321,7 @@ article.services.icons {padding-top: 5.75em;}
 .standards div:first-child {width: 599px; padding: 2em 2em 1.5em 6.625em; box-sizing: border-box;}
 .standards div:last-child {width: 466px;}
 
-.modal {background: #F8F8F5; padding: 7em 6.625em; width: 867px; box-sizing: border-box; position: absolute; top: 0; right: 0; z-index: 10;}
+.modal {background: #F8F8F5; padding: 5em 6.625em 3em; width: 867px; box-sizing: border-box; position: absolute; top: 0; right: 0; z-index: 10;}
 .standards:last-of-type .modal {position: absolute; bottom: 0; right: 0; z-index: 10; height: fit-content;} 
 .modal.show { animation: fadeIn ease 0.3s; -webkit-animation: fadeIn ease 0.3s; -moz-animation: fadeIn ease 0.3s; -o-animation: fadeIn ease 0.3s; -ms-animation: fadeIn ease 20s;}
 @keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
@@ -324,7 +330,7 @@ article.services.icons {padding-top: 5.75em;}
 @-o-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
 @-ms-keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
 
-.modal h2 {font-weight: 400; margin-bottom: 2em}
+.modal h2 {font-weight: 400; margin-bottom: 1em}
 .modal h2 span {background: linear-gradient(180deg, #F8F8F5 60%, #F8E8B1 40%);}
 .modal p {margin-bottom: 2em;}
 .modal a.close, .banner a.close {position: absolute; top: 1em; left: 2em; display: block; padding: 1em 1.5em; background: url('icons/close.svg') center left no-repeat; background-size: 16px 12px;}
@@ -345,7 +351,7 @@ a.email {padding: 0.5em 0 0.5em 3em; background: url('icons/mail-greencircle.svg
 .branchListing h2 {line-height: inherit; padding: 0.5em 0;}
 .branchListing p {padding: 1em 0;}
 .branchListing h2, .branchListing p, .branchListing a {margin: 0 2em 0 0;}
-.page-pricing .branchListing:last-child a, .page-home-care .branchListing:last-child a {font-size: 1em;}{font-size: 1em;}
+.page-pricing .branchListing:last-child a, .page-template-page-home-care .branchListing:last-child a {font-size: 1em;}{font-size: 1em;}
 
 .compare {margin-top: 3.875em;}
 .compare h2 {color: #185D6F; font-size: 3em; line-height: 1em; font-weight: 400; margin: 0.833em 0 0.667em 0;}
@@ -371,15 +377,16 @@ a.email {padding: 0.5em 0 0.5em 3em; background: url('icons/mail-greencircle.svg
 .page-about-bellevie .staff {margin-bottom: 1em;} 
 
 .job {padding: 1.5em 2em; margin-bottom: 1.5em; position: relative;}
-.job h3 {color: #185D6F; font-weight: 400; margin-top: 1em;} 
-.job .flex {cursor: pointer;}
-.job .flex div {margin-left: 6em;}
-.job .flex p:first-child {margin-top: 0;}
-.job .flex img {position: absolute; top: 2.625em; right: 2em; transition-duration: 0.3s; transition-property: transform; }
-.job img.rotate { transform: rotate(45deg); -webkit-transform: rotate(45deg); }
-.job .closed {display: none;}
-.job .show {display: block; border-top: 4px solid #F8E8B1;}
+.job .flex h3 {color: #185D6F; font-weight: 400; margin-top: 0; margin-bottom: 0;} 
+.job .flex div {margin-left: 6em; display: flex;}
+.job .flex p {margin-top: 0;}
+.job .flex p:first-child {margin-right: 1em;}
+.job .flex img {position: absolute; top: 1.5em; right: 2em;}
+.job.full {padding: 0;}
+.job h1 {border-bottom: 2px solid #F8E8B1;}
+.job h2 {margin: 1.5em 0 0 0; font-weight: 400; color: #185D6F;}
 .job .button {margin-top: 2em;}
+.job.full .button {position: absolute; top: 4.5em; right: 2em;}
 
 .steps {padding-top: 11.437em;}
 .steps h4 {margin-top: 0.5em;}
@@ -473,6 +480,8 @@ article footer a {color: #BA7800;}
 
 .local {position: relative; z-index: 2;}
 .local li {position: relative; overflow: visible; backface-visibility: hidden; -webkit-column-break-inside: avoid; column-break-inside: avoid; transform: translate3d(0,0,0) ;}
+.local h3 {margin-top: 2em; padding: 2em 0 0 2.25em; border-top: 1px solid #999; background: url('icons/location-pin.svg') no-repeat bottom left; background-size: 36px 36px; line-height: 1.5em;}
+.local h3:first-of-type {margin-top: 0; padding-top: 0.5em; border: none;}
 .tooltip.hidden {display: none;}
 .tooltip {display: inline; width: 400px; padding: 0 1em 1em 1em; position: absolute; bottom: 1.8em; left: 0; z-index: 3; transform: translateZ(1em) }
 .tooltip p {font-size: 0.9em;}
@@ -480,6 +489,8 @@ article footer a {color: #BA7800;}
 
 .covid {position: fixed; top: 0; left: 0; z-index: 6; height: 100vh; width: 100vw; background: rgba(25, 25, 25, 0.4); backdrop-filter: blur(4px); }
 .covid .pop {background: #f5f5f5; margin: 20vh auto 0 auto; width: 50%; border-radius: 4px; padding: 1.5em; border-color: #185D6F; position: relative;}
+.pop h3 {margin-top: 2em;}
+.covid p img {float: left; margin: 0.25em 0.75em 0.25em 0;}
 .covid .close {position: absolute; top: 1em; right: 2em; display: block; padding: 1em 1.5em; background: url('icons/close.svg') center left no-repeat; background-size: 16px 12px;}
 .covid.hidden{padding-bottom: 4.75em;}
 
@@ -488,7 +499,8 @@ article footer a {color: #BA7800;}
 #map ul {font-size: 0.8em; padding: 0.2em; margin: 0; position: absolute; bottom: 0; right: 0; background: rgba(0, 0, 0, 0.3);}
 #map ul a {color: #000;}
 
-.page-template-local-landing-page .section.dark {margin: 0;}
+.page-template-local-landing-page .section.dark, .page-contact-us footer {margin: 0;}
+.page-contact-us .image {float: left; width: 175px; height: 200px; margin-right: 3em; border-radius: 10px; border: 4px solid #185D6F;}
 .callUs {padding-bottom: 4.5em;}
 .callUs div:last-child {margin-left: 3em;}
 .callUs div.image:last-child {margin-left: 0;}
@@ -499,6 +511,19 @@ article footer a {color: #BA7800;}
 
 @media screen and (max-width: 1400px) {
 	header a.button.ghost {display: none;}
+}
+
+@media screen and (max-width: 1340px) { 
+	header nav { margin: 0 0 0 2em;}
+	header nav a { padding: 0.6em 0.3em ;}
+}
+
+@media screen and (max-width: 1205px) {
+	header nav a { padding: 0.6em 0.2em;}
+}
+
+@media screen and (max-width: 1170px) {
+	header a.button {display: none;} 
 }
 
 @media screen and (max-width: 1170px) {
@@ -530,7 +555,7 @@ article footer a {color: #BA7800;}
 	.page-pricing header a.dark {margin: 0;}
 	
 	header nav {display: none; float: none; margin: 0; width: 100%; height: 100vh; position: absolute; top: 93px; left: 0; background: #FFF; padding-bottom: 1.5em; box-sizing: border-box; background: rgba(51, 51, 51, 0.8);}
-	header nav ul.menu {width: 50%; height: 100vh; margin-left: 50%; background: #FFF; padding: 1em 1.875em; 1em 1.875em; box-sizing: border-box;}
+	header nav ul.menu {width: 50%; height: 100vh; margin-left: 50%; background: #FFF; padding: 1em 1.875em; 1em 1.875em; box-sizing: border-box; overflow: scroll;}
 	header nav ul.sub-menu li:last-child {border: none;}
 	header nav ul li {display: list-item;}
 	header nav ul ul {display: block; position: relative; width: 90%; box-shadow: none;}
@@ -600,7 +625,7 @@ article footer a {color: #BA7800;}
 	p {margin-top: 0.8em;}
 
 	header img {width: 73px; height: auto;}
-	header nav ul.menu {width: 100%; margin-left: 0; padding-top: 0.5em; line-height: 1.4em;}
+	header nav ul.menu {width: 100%; margin-left: 0; padding-top: 0.5em; padding-bottom: 10em; line-height: 1.4em; height: 100vh;}
 	header nav ul.menu li:last-child {border-bottom: 2px solid #185D6F;}
 	header nav ul.sub-menu {line-height: 1em;}
 	header nav ul.sub-menu li:last-child {border: none;}
@@ -610,7 +635,7 @@ article footer a {color: #BA7800;}
 	header a.button {margin-top: 0;}
 	header a.button.ghost, header .buttons a.call {display: none;}
 	header .buttons a.mobile {display: block;}
-	header a.button.dark {background-position: 10px 14px; margin-right: 0; border-radius: 4px; padding-left: 2em; padding-right: 1em;}
+	header a.button.dark {background-position: 10px 14px; font-size: 0.9em; margin-right: 0; border-radius: 4px; padding-left: 2em; padding-right: 1em;}
 	header a.button.dark:hover {background-position: 10px 14px;}
 	
 	main {margin-top: 5.7em;}
@@ -629,6 +654,9 @@ article footer a {color: #BA7800;}
 	.hero p {padding: 0; text-align: center;}
 	.hero:after {display: none;}
 	.hero a.button {margin-left: 1em; margin-right: 1em;}
+	
+	.hero .button.mobile {display: block;}
+	.hero .button.call {display: none;}
 	
 	.hero img {height: auto; width: 100%; position: relative; top: 0; left: 0; transform: translate(0 ,0);}
 	.notifications .button {display: block; margin-top: 1em;}
@@ -657,6 +685,8 @@ article footer a {color: #BA7800;}
 	
 	.local h2, .local p {text-align: center;}
 	.local ul {column-count: 2; column-fill: balance; column-gap: 0; padding-left: 2em;}
+	.local h3 {line-height: 1.75em;}
+	.local li {width: 85%}
 	
 	.compare h2 {font-size: 2em;}
 	.compare img {width: 100%;}
@@ -728,7 +758,8 @@ article footer a {color: #BA7800;}
 	.job .flex {display: block;}
 	.job h3 {margin: 0;}
 	.job .flex div {margin: 0;}
-	.job div:first-child strong {display: none;}
+	.job .flex p:first-child {display: none;} 
+	.job.full .button {position: relative; top: 0; right: 0;}
 	
 	.section.dark {margin-top: 2.5em;}
 	
@@ -743,7 +774,7 @@ article footer a {color: #BA7800;}
 	article footer p {border-right: none;}
 	
 	article.thumb {padding: 0;}
-	article.thumb .image {width: 100%; height: 150px;}
+	article.thumb div.image {width: 100%; height: 150px;}
 	article.thumb .image img {height: auto; width: 100%;}
 	article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
 	article.thumb p.small {margin-bottom: 1em;}
@@ -778,8 +809,9 @@ article footer a {color: #BA7800;}
 	
 	.callUs div {margin: 0 auto;}
 	.callUs .image {margin-bottom: 1.5em}
+	.page-contact-us .image {float: left; width: 90px; height: 100px; margin-right: 1.5em; margin-bottom: 1.5em; border-radius: 10px; border: 4px solid #185D6F;}
 	
-	.covid .pop {width: 90%; box-sizing: border-box; }
+	.covid .pop {width: 90%; box-sizing: border-box; margin-top: 3vh; height: 94vh; overflow-y: scroll;}
 	.covid h3 {margin-top: 1.8em;}
 	
 }

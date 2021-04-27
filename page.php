@@ -150,8 +150,6 @@ get_header();
 				<?php
 				if ( is_child(93) ) {
     				echo '<h2>We offer Wellbeing Support throughout the South Oxfordshire area</h2><p>We have several well established teams suporting people throughout South East Oxfordshire. See our <a href="/locations/south-oxfordshire-homecare">South Oxfordshire page</a> for a full list of areas we cover</p>';
-    			} else if ($currentPage === 'northumberland') {
-    				
     			} else {
 					// The Query
 					$queryValues = new WP_Query( array( 'name' => $currentPage, 'post_type' => 'branch', 'posts_per_page' => 1 ) ); //magic!

@@ -49,13 +49,30 @@ get_header();
  		</div> 
  		<?php 
 				$postName = $post->post_name; //Get the slug of the current page
+				$currentPage = substr($postName, 0, strpos($postName, '-'));
+				if ($currentPage) { 
+					$thisPage = $currentPage; 
+					$loc2 = substr($postName, strrpos($postName, '-') +1);
+					$locTitle = ucfirst($currentPage) . ' and ' . ucfirst($loc2);
+				} else { 
+				 	$thisPage = $postName; 
+				 	$locTitle = ucfirst($thisPage);
+				 } 
+
 			?>
  		<div class="section whitebg local">
  			<div class="content">
- 				<h2>Providing care throughout the following areas</h2>
  				<?php
+ 				if ($postName === 'banbury') {
+ 					echo '<h2>Providing outstanding care in Banbury and the surrounding areas.</h2>';
+ 				} else if ($postName === 'chipping-norton') {
+ 					echo '<h2>Providing outstanding care in Chipping Norton and the surrounding areas.</h2>';
+ 				} else {
+ 					echo '<h2>Providing care throughout the following areas</h2>';
+ 				}
+				
  				// The Query
-					$queryValues = new WP_Query( array( 'name' => $postName, 'post_type' => 'branch', 'posts_per_page' => 1 ) ); //magic!
+					$queryValues = new WP_Query( array( 'name' => $thisPage, 'post_type' => 'branch', 'posts_per_page' => 1 ) ); //magic!
 					// The Loop
 					while ( $queryValues->have_posts() ) {
     					$queryValues->the_post();
@@ -69,18 +86,24 @@ get_header();
 						$parentSlug = $post_data->post_name;
 						
 						$upOneLevel = 'locations/' . $parentSlug;
-				 	?>
-				 	<p>We have Wellbeing Support Teams providing care throughout <a href=<?php echo site_url($upOneLevel); ?>>South Oxfordshire</a></p>
+				 	
+				 	if ($postName === 'banbury') {
+							echo '<p>We have small, local teams of Wellbeing Support Workers based throughout <a href=' . site_url($upOneLevel) . '>Oxfordshire, click here for a full list of locations</a>.</p>';
+						} else if ($postName === 'chipping-norton') {
+							echo '<p>We have small, local teams of Wellbeing Support Workers based throughout <a href=' . site_url($upOneLevel) . '>Oxfordshire, click here for a full list of locations</a>.</p>';
+						} else {
+							echo '<p>We have Wellbeing Support Teams providing care throughout <a href=' . site_url($upOneLevel) . '>Oxfordshire</a></p>';
+						} ?>
  			</div>
  		</div>
 
 
 		<?php
 				// The Query
- 				$queryValues = new WP_Query( array( 'post_type' => 'colleague', 'category_name' => $postName, 'posts_per_page' => -1 ) ); //magic!
+ 				$queryValues = new WP_Query( array( 'post_type' => 'colleague', 'category_name' => $thisPage, 'posts_per_page' => -1 ) ); //magic!
 				// The Loop
 				if ($queryValues->have_posts()) :
-					echo '<div class="section"><div class="content centered"><h2 class="light">We value our people - meet your local team in ' . ucfirst($postName) . '</h2></div><div class="content flex justifyCenter">';
+					echo '<div class="section"><div class="content centered"><h2 class="light">We value our people - meet your local team in ' . $locTitle . '</h2></div><div class="content flex justifyCenter">';
 					while ( $queryValues->have_posts() ) : $queryValues->the_post();
     					$imageID = get_field('profile_pic');
 						$image = wp_get_attachment_image_src( $imageID, 'full' );
@@ -99,11 +122,10 @@ get_header();
 				<?php $postName = $post->post_name; //Get the slug of the current page
 				// The Query
 				
-				$catTitle = ucwords(str_replace("-"," ", $postName));
-				$queryNews = new WP_Query( array( 'category_name' => $postName, 'post_type' => 'post', 'posts_per_page' => 3 ) ); //magic!
+				$queryNews = new WP_Query( array( 'category_name' => $thisPage, 'post_type' => 'post', 'posts_per_page' => 3 ) ); //magic!
 
 				if ( $queryNews->have_posts() ) :
-					echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $catTitle . '</h2></div>';
+					echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $locTitle . '</h2></div>';
 					echo '<div class="content news">';
     				while ( $queryNews->have_posts() ) : $queryNews->the_post();
         				echo '<article class="thumb flex rounded border offwhitebg"><div class="image">';

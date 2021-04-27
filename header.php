@@ -54,14 +54,8 @@
 					<?php wp_nav_menu( array(  'container' =>false, 'theme_location' => 'primary', ) ); ?>
 			</nav>
 			<div class="buttons">
-				<a class="button dark call" href="/contact-us">Call Us</a>
-				<?php $postName = $post->post_name; //Get the slug of the current page
-					if (strpos($postName, 'durham') !== false) {
-						echo '<a class="button dark mobile" href="tel: 019131301891">Call Us</a>';
-					} else {
-						echo '<a class="button dark mobile" href="tel: 01235355570">Call Us</a>';
-					} 
-				?>
+				<a class="button dark call" href="tel: 01235 355 570">01235 355 570</a>
+				<a class="button dark mobile" href="tel: 01235 355 570">01235 355 570</a>
 			</div>
 			<a class="button openNav">Menu</a>
 			

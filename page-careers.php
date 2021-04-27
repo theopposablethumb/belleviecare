@@ -39,10 +39,8 @@ get_header();
 				while ( $queryServices->have_posts() ) {
     				$queryServices->the_post();
     				echo '<article class="rounded whitebg border job">'; 
-    				echo '<div class="flex"><h3>' . get_field('job_title') . '</h3>';
-    				echo '<div><p><strong>Location</strong></p><p>' .get_field('location') . '</p></div><img src="' . get_template_directory_uri() . '/icons/open-green.svg" height="32px" width="32px" /></div><div class="hidden">';
-    				echo the_content();
-    				echo '<div class="centered"><a class="button light centered" target="_blank" href="' . get_field('hr_partner_link') . '">Apply now</a></div></div></article>';
+    				echo '<div class="flex"><h3><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . get_field('job_title') . '</a></h3>';
+    				echo '<div><p><strong>Location</strong></p><p>' .get_field('location') . '</p></div><a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><img src="' . get_template_directory_uri() . '/icons/chevron-yellow.svg" height="32px" width="32px" /></a></div></article>';
 				}
 			} else {
 				echo '<article><p>We currently do not have any open positions, but will be recruiting again in County Durham and Oxfordshire soon!</p></article>';

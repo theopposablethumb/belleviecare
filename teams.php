@@ -49,7 +49,8 @@ get_header();
 					echo '<article class="quarters border rounded staff"><div class="image"><img src="' . $image[0] . '" alt="' . $alt_text . '" /></div>';
     				echo '<div><h4>' . get_field('staff_name') . '</h4>';
     				echo '<p class="jobTitle">' . get_field('job_title') . '<p>';		
-    				echo '<p class="hidden">' . get_field('profile') . '</p></div></article>';
+    				if(get_field('profile')) { echo '<p class="hidden">' . get_field('profile') . '</p></div>'; }
+					echo '</article>';
 				}
 				wp_reset_postdata(); ?>
 				</div>

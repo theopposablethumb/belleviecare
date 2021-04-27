@@ -3,11 +3,14 @@ let covid = () => {
     let tel = covidNumber();
     const covidPop = document.createElement('div');
     covidPop.classList.add('covid');
+    covidSEContent = ``;
+    covidNEContent = ``;
     covidPop.innerHTML = `<div class="pop shadow border">
             <a class="close">Close</a>
-            <h3>How we are keeping people safe during lockdown</h3>
-            <p>In line with the government guidelines, we have been supporting people to live well in their own homes since the beginning of the pandemic, and will continue to do so during the lockdown. We'd like to thank our amazing key workers for all of their hard work and support to make this happen.</p> 
-            <p>As always, our priority is the wellbeing and safety of the people we support, and our Wellbeing Support Workers. If you are concerned about home support during the pandemic, please call us on ${tel} to find out more about our response to Covid-19.</p>
+            <h3>100% of our Wellbeing Support Workers in Oxfordshire have had their first vaccination.</h3>
+            <p>We can’t wait to hug our loved ones, laugh with friends and experience days out again - which is why we are so proud to have made the first step on the journey to life after the pandemic. Our Wellbeing Support Workers have worked tirelessly to keep the people we support safe, and while they will still take the necessary precautions, we are very happy to hit this milestone.</p>
+            <p>As our thoughts turn to post-pandemic life, will your elderly loved one need a bit of extra support to do the activities and hobbies they love?</p>
+            <p><img src="http://belleviecare.co.uk/wp-content/uploads/2021/01/Jill-270x300.jpg" alt="Jill, Wellbeing and Family Communication Lead" width="75px" height="80px" />Our flexible packages are tailored to the needs and aspirations of the people we support, whether that’s returning to the local bingo hall or having a trip to the cafe for a cup of tea. Call Jill, our dedicated Wellbeing and Family Communication Lead today to discuss your needs <a href="tel: ${tel}">${tel}</a></p>
         </div>`;
     main.appendChild(covidPop);
     covidVaccine();
@@ -29,15 +32,22 @@ let covidVaccine = () => {
     close.addEventListener('click', function() {
         container.classList.add('hidden');
     });
+	container.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if(e.target === e.currentTarget) container.classList.add('hidden');
+    })
 }
 
 let displayCovid = () => {
     let domain = (new URL(document.URL)).hostname;
     let prevDomain;
+    let page = document.URL;
     if (document.referrer) 
         {prevDomain = (new URL(document.referrer)).hostname;}
-    if (prevDomain === null || prevDomain !== domain) { 
-        covid();
+//    if (prevDomain === null || prevDomain !== domain) { 
+        if (page.includes('oxfordshire') && !page.includes('job')) {
+            covid();
+//        }
     } else{
         return null;
     }
@@ -109,9 +119,12 @@ let scrollToService = () => {
 			
 let replacePhoneNumber = (phone) => {
     let numberLink = document.querySelector('.section a[href^=tel]');
-    let mobileHeader = document.querySelector('header .buttons .mobile');
+    let header = document.querySelectorAll('header .buttons a');
+    header.forEach (el => {
+        el.setAttribute('href', 'tel:' + phone);
+        el.innerText = phone;
+    })
     numberLink.setAttribute('href', 'tel: ' + phone);
-    mobileHeader.setAttribute('href', 'tel:' + phone);
 }
 
 let replaceCheckList = (area) => {
@@ -136,8 +149,11 @@ let contextualPhoneNumbers = () => {
         replacePhoneNumber('0191 313 0189');
         replaceCheckList('NE');
     } else if (current.includes('durham') || current.includes('tyne') || current.includes('northumberland')) {
-        let mobileHeader = document.querySelector('header .buttons .mobile');
-        mobileHeader.setAttribute('href', 'tel: 0191 313 0189');
+        let header = document.querySelectorAll('header .buttons a');
+        header.forEach (el => {
+            el.setAttribute('href', 'tel:0191 313 0189');
+            el.innerText = '0191 313 0189';
+        })
     } else if (prev.includes('oxford') && current.includes('home-care')) {
         replacePhoneNumber('01235 355 570');
         document.querySelector('.section a[href^=tel]').innerHTML = '01235 355 570';

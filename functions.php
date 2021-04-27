@@ -247,16 +247,14 @@ function belleviecare_scripts() {
    		global $wp_query;
    		wp_enqueue_script( 'belleviecare-pagination', get_template_directory_uri() . '/js/pagination.js', array(), _S_VERSION, true );
    		wp_localize_script( 'belleviecare-pagination', 'pagination', array('ajaxurl' => admin_url( 'admin-ajax.php' )));
-   }  elseif(is_page('news-page')) {
+   }  elseif(is_page_template('news.php')) {
    		global $wp_query;
    		wp_enqueue_script( 'belleviecare-pagination', get_template_directory_uri() . '/js/pagination.js', array(), _S_VERSION, true );
    		wp_localize_script( 'belleviecare-pagination', 'pagination', array('ajaxurl' => admin_url( 'admin-ajax.php' ), 'security' => wp_create_nonce( 'load_more_posts' ) ));
-   } elseif(is_page('standards')) {
+   } elseif(is_page_template('page-standards.php')) {
    		wp_enqueue_script( 'modal', get_template_directory_uri() . '/js/modal.js', array(), _S_VERSION, true );
-   } elseif(is_page('faqs')) {
+   } elseif(is_page_template('page-faqs.php')) {
    		wp_enqueue_script( 'sliders', get_template_directory_uri() . '/js/sliders.js', array(), _S_VERSION, true );
-   } elseif (is_page('careers')) {
-   		wp_enqueue_script( 'careers', get_template_directory_uri() . '/js/careers.js', array(), _S_VERSION, true );
    } elseif(is_page_template('local-landing-page.php')) {
    		wp_enqueue_script('openLayers', get_template_directory_uri() .'/js/openlayers/ol.js');
    		wp_enqueue_script( 'maps', get_template_directory_uri() . '/js/maps.js');
@@ -370,5 +368,63 @@ function is_child($pageID) {
                return true;
 	} else { 
                return false; 
+	}
+}
+
+add_filter( 'wpseo_json_ld_output', '__return_false' );
+
+add_action('wp_head', 'structuredDataJobs');
+function structuredDataJobs() {
+	global $post;
+	get_post_type();
+	if( 'job' == get_post_type())  {
+		$id = get_the_ID();
+		echo '<script type="application/ld+json">
+		{
+			"@context" : "https://schema.org/",
+      		"@type" : "JobPosting",
+      		"title" : "' . get_field('job_title') . '",
+      		"description" : "<p>' . get_field('job_description') . '</p>",
+      		"identifier": {
+        		"@type": "PropertyValue",
+        		"name": "' . get_bloginfo( $show = 'name', $filter = 'raw' ) . '",
+        		"value": "' . $id . '"
+      		},
+      		"datePosted" : "' . get_the_date('Y-m-d') . '",
+      		"applicantLocationRequirements": {
+        		"@type": "Country",
+        		"name": "UK"
+      		},';
+      		if (get_field('location')) {
+      			echo '"jobLocation": {
+    			"@type": "Place",
+    			"address": {
+      				"@type": "PostalAddress",
+      				"addressLocality": "' . get_field('location') . '"
+   	 			}
+  			},';
+      		};
+      		echo '"jobLocationType": "' . get_field('location_type') . '",
+      		"employmentType": "' . get_field('employment_type') . '",
+      		"hiringOrganization" : {
+        		"@type" : "Organization",
+        		"name" : "' . get_bloginfo( $show = 'name', $filter = 'raw' ) . '",
+        		"sameAs" : "' . get_bloginfo( $show = 'url', $filter = 'raw' ) . '",
+        		"logo" : "' . esc_url( wp_get_attachment_url( get_theme_mod( 'custom_logo' ) ) ) . '"
+      		},
+      		"baseSalary": {
+        		"@type": "MonetaryAmount",
+        		"currency": "GBP",
+        		"value": {
+          			"@type": "QuantitativeValue",
+          			"minValue":' . get_field('salary') . ',';
+          			if (get_field('max_salary')) {
+          				echo '"maxValue": ' . get_field('max_salary') . ',';
+          			};
+          			echo '"unitText": "' . get_field('salary_type') . '"
+        		}
+    		}
+    	}
+    </script>';
 	}
 }

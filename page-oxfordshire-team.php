@@ -64,7 +64,8 @@ get_header();
 					echo '<img src="' . $image[0] . '" alt="' . $alt_text . '" />';
     				echo '<h2>' . get_field( 'staff_name' ) . '</h2>';
     				echo '<p>' . get_field( 'job_title' ) . '</p>';
-    				echo '<p>' . get_field( 'profile' ) . '</p></article>';
+    				if(get_field('profile')) { echo '<p class="hidden">' . get_field('profile') . '</p></div>'; }
+					echo '</article>';
 				}
 				wp_reset_postdata(); ?>
 				</div>
