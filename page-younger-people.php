@@ -120,7 +120,7 @@ get_header();
 				<div class="content flex">
 				<?php				
 					// The Query
-					$queryValues = new WP_Query( array( 'post_type' => 'story','category_name' => 'younger-people', 'posts_per_page' => 2 ) );
+					$queryValues = new WP_Query( array( 'post_type' => 'story','category_name' => 'younger-people', 'posts_per_page' => 3 ) );
  
 				// The Loop
 				while ( $queryValues->have_posts() ) {

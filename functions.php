@@ -238,12 +238,18 @@ function belleviecare_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
-	if(is_page(array('contact-us', 93, 95, 97, 692, 762))){
+	if(is_page(array('contact-us', 93, 692, 666))){
 		global $wp_query;
-	   	wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');
+	   	wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js', array(), _S_VERSION, true);
 		wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
-		wp_enqueue_script('location', get_template_directory_uri() .'/js/location.js');
-   } elseif(is_category('news')) {
+		wp_enqueue_script('location', get_template_directory_uri() .'/js/location.js', array(), _S_VERSION, true);
+   } elseif(is_single(1197)){
+		wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');
+		wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+	} elseif(is_single(1336)){
+		wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');
+		wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+	} elseif(is_category('news')) {
    		global $wp_query;
    		wp_enqueue_script( 'belleviecare-pagination', get_template_directory_uri() . '/js/pagination.js', array(), _S_VERSION, true );
    		wp_localize_script( 'belleviecare-pagination', 'pagination', array('ajaxurl' => admin_url( 'admin-ajax.php' )));
@@ -257,10 +263,10 @@ function belleviecare_scripts() {
    		wp_enqueue_script( 'sliders', get_template_directory_uri() . '/js/sliders.js', array(), _S_VERSION, true );
    } elseif(is_page_template('local-landing-page.php')) {
    		wp_enqueue_script('openLayers', get_template_directory_uri() .'/js/openlayers/ol.js');
-   		wp_enqueue_script( 'maps', get_template_directory_uri() . '/js/maps.js');
-		wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js');
+   		wp_enqueue_script( 'maps', get_template_directory_uri() . '/js/maps.js', array(), _S_VERSION, true);
+		wp_enqueue_script('forms', get_template_directory_uri() .'/js/forms.js', array(), _S_VERSION, true);
 		wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
-		wp_enqueue_script('location', get_template_directory_uri() .'/js/location.js');
+		wp_enqueue_script('location', get_template_directory_uri() .'/js/location.js', array(), _S_VERSION, true);
    }
 }
 add_action( 'wp_enqueue_scripts', 'belleviecare_scripts' );
@@ -373,8 +379,8 @@ function is_child($pageID) {
 
 add_filter( 'wpseo_json_ld_output', '__return_false' );
 
-add_action('wp_head', 'structuredDataJobs');
-function structuredDataJobs() {
+add_action('wp_head', 'structuredData');
+function structuredData() {
 	global $post;
 	get_post_type();
 	if( 'job' == get_post_type())  {
@@ -427,4 +433,61 @@ function structuredDataJobs() {
     	}
     </script>';
 	}
+	if ( is_front_page() ) {
+		echo '<script type="application/ld+json">
+			{
+				"@context": "http://schema.org", 
+				"@type": "Organization", 
+				"description": "Home care tailored to you and your loved ones, helping people to live happily at home. Our local teams are recruited for their personal values and offer a wide range of care services with a focus on wellbeing.", 
+				"name": "BelleVie Care", 
+				"legalName": "BelleVie Care Ltd",
+				"url": "https://www.belleviecare.co.uk", 
+				"logo": "https://www.belleviecare.co.uk/wp-content/uploads/2020/10/bellevielogo-sm.png", 
+				"founders": [
+					{ "@type": "Person", "name": "Trudie Fell", "jobTitle": "Chief Executive Officer" },
+					{ "@type": "Person", "name": "Violaine Pierre", "jobTitle": "Chief Operating Officer"}
+				],
+				"contactPoint": {
+					"@type":"ContactPoint", 
+					"contactType":"New enquiries",
+					"areaServed": [
+						{ "@type": "AdministrativeArea", "name": "South Oxfordshire" },
+						{ "@type": "AdministrativeArea", "name": "County Durham" },
+						{ "@type": "AdministrativeArea", "name": "Tyne and Wear" },
+						{ "@type": "AdministrativeArea", "name": "Northumberland" }
+					],
+					"telephone":["01235 355 570", "0191 313 0189"],
+					"email":"info@belleviecare.co.uk"
+				},
+				"sameAs": [
+					"https://www.facebook.com/BellevieCareUK/",
+					"https://twitter.com/Bellevie_care/",
+					"https://www.instagram.com/belleviecare/",
+					"https://www.linkedin.com/company/bellevie/"
+				]
+			} 
+		</script>';
+	};
+	if (is_page_template('page-faqs.php') ) {
+		$queryValues = new WP_Query( array( 'post_type' => 'faq', 'posts_per_page' => -1 ) );
+		echo '<script type="application/ld+json">
+    			{
+      				"@context": "https://schema.org",
+      				"@type": "FAQPage",
+      				"mainEntity": [';
+		while ( $queryValues->have_posts() ) {
+    		$queryValues->the_post();
+    		if ($queryValues->current_post +1 == $queryValues->post_count) {
+    			echo '{ "@type": "Question", "name": " ' . get_the_title() . ' ", "acceptedAnswer": { "@type": "Answer", "text": " ';
+    			echo esc_html_e(get_the_content()) . ' "} }';
+			} else {
+				echo '{ "@type": "Question", "name": " ' . get_the_title() . ' ", "acceptedAnswer": { "@type": "Answer", "text": " ';
+    			echo esc_html_e(get_the_content()) . ' "} },';
+			}
+		}
+		echo ']}</script>';
+		wp_reset_postdata();
+	}
 }
+
+add_filter( 'use_widgets_block_editor', '__return_false' );

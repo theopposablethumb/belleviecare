@@ -12,6 +12,7 @@
 	<?php if ('job' == get_post_type() ) : ?>
 		<?php
 			$salary =   get_field('salary');
+			$salaryRange = get_field('salary_range');
 			$formatSalary = number_format ($salary, 0, '.' , ',' );
 			$salaryTyle = strtolower(get_field('salary_type'));
 		?> 
@@ -20,7 +21,11 @@
 			<section class="meta">
 				
 				<p>Location: <strong><?php echo get_field('location') ?></strong></p>
-				<p>Salary: <strong>£<?php echo $formatSalary .' ' . ucfirst($salaryTyle) ?></strong></p>
+				<?php if ($salaryRange) {
+					echo '<p>Salary range: <strong>' . $salaryRange . '</strong></p>';
+				} else {
+					echo '<p>Salary: <strong>£' . $formatSalary .' ' . ucfirst($salaryTyle) .'</strong></p>';
+				} ?>
 			</section>
 			<?php echo '<a class="button light centered" target="_blank" href="' . get_field('hr_partner_link') . '">Apply now</a>' ?>
 			<?php 	the_content(); ?>
@@ -37,8 +42,13 @@
 		?>
 		<footer>
 			<?php 
-				belleviecare_posted_by(); 
-				belleviecare_entry_footer(); ?>
+				if (is_single(1197)) {
+					return null;
+				} else {
+					belleviecare_posted_by(); 
+					belleviecare_entry_footer();	
+				}
+			?>
 		</footer>
 	</article>
 

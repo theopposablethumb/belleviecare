@@ -21,7 +21,13 @@ const locations = [
 	
 	    {'town': 'chipping', 'coords': [[-1.545096541619718, 51.94178349059665]], 'coverage': 10000, 'zoom': 11.8, 'mobileZoom': 11.4}, 
     
-    {'town': 'banbury', 'coords': [[-1.3363048235129844, 52.06253317772462]], 'coverage': 10000, 'zoom': 11.8, 'mobileZoom': 11.4}
+    {'town': 'banbury', 'coords': [[-1.3363048235129844, 52.06253317772462]], 'coverage': 10000, 'zoom': 11.8, 'mobileZoom': 11.4},
+	{'town': 'pangbourne', 'coords': [[-1.08625986607806, 51.48397345295721]], 'coverage': 10000, 'zoom': 11.8, 'mobileZoom': 11.4},
+	{'town': 'wallingford', 'coords': [[-1.1253473105170122, 51.60059578137141]], 'coverage': 10000, 'zoom': 11.8, 'mobileZoom': 11.4},
+    
+    {'town': 'tyne', 'coords': [[-1.6104738816917203, 54.97425221783778]], 'coords2': [-1.3819818112287672, 54.90604092140663], 'coords3': [-1.6844101533295905, 55.172155708210624], 'coverage': 5000, 'zoom': 11, 'mobileZoom': 10.2}, 
+    {'town': 'county', 'coords': [[-1.579665316617739, 54.77780957949464]], 'coverage': 20000, 'zoom': 10.8, 'mobileZoom': 10.6},
+    {'town': 'northumberland', 'coords': [[-1.891220362683515, 54.96716311153304]], 'coverage': 26000, 'zoom': 10.4, 'mobileZoom': 10.6},
 ];
 
 let isMobile = () => {
@@ -81,6 +87,13 @@ let getCoords = () => {
 	return coords;
 }
 
+let getCoords2 = () => {
+	let town = massageTown();
+	let loc = findTown(town);
+	let coords = loc.coords2;
+	return coords;
+}
+
 let getPolygon = () => {
     let town = massageTown();
     let loc = findTown(town);
@@ -104,7 +117,6 @@ let getZoom = () => {
 	} else {
 	    zoom = level.zoom;
 	}
-	console.log(zoom);
 	return zoom;
 }
 
@@ -128,10 +140,13 @@ const maps = () => {
       let view = map.getView();
       
       let circleCoords = view.getCenter();
+      let circleCoords2 = getCoords2();
       let circleRadius = getCoverage();
       let circle = new ol.geom.Circle(circleCoords, circleRadius); // radius uses the units of the projection
+      let circle2;
       let circleFeature = new ol.Feature(circle); // each shape has to be added to a feature, the feature is what takes style and gets rendered
-      
+      let circleFeature2;
+         
        let polyCoords = getPolygon();
       
       let circleStyle = () => {
@@ -142,13 +157,24 @@ const maps = () => {
       };
  
  	  circleFeature.setStyle(circleStyle()); 
+ 	  
+ 	  if (circleCoords2) {
+          circle2 = new ol.geom.Circle(ol.proj.fromLonLat(circleCoords2), circleRadius); 
+          circleFeature2 = new ol.Feature(circle2);
+          circleFeature2.setStyle(circleStyle()); 
+      }
+  	  
       
       let vectorSource = new ol.source.Vector({ 
    		projection: 'EPSG:4326' //determines units for circle radius
   	  });
   	    	  
   	  if (!polyCoords) {
-  	      vectorSource.addFeature( circleFeature );
+  	      if (circleCoords2) {
+  	          vectorSource.addFeatures([ circleFeature, circleFeature2 ] );    
+  	      } else {
+  	          vectorSource.addFeature(circleFeature);    
+  	      }
   	  } else {
   	      let poly = polyCoords.map( coords => ( ol.proj.fromLonLat(coords) ));
           let polyFeature = new ol.Feature( {geometry: new ol.geom.Polygon( [ poly ] )} ); 

@@ -83,6 +83,14 @@ get_header();
 							
 							<label for="message">When should we call you?</label>
 							<textarea name="message" class="border rounded" rows="5" columns="70" placeholder="Let us know when we should call you, and let us know if there's anything specific you want us to know"></textarea>
+							<div class="subscribe">
+								<p>BelleVie publish a monthly newsletter. Would you like to subscribe?</p>
+								<label for="send_customer_newsletter___consent_received" class="check">
+									<input type="checkbox" id="send_customer_newsletter___consent_received" name="send_customer_newsletter___consent_received">
+									<div class="checkmark border rounded"></div>
+									<span>Yes! Sign me up for the BelleVie newsletter!</span>
+								</label>
+							</div>
 							<div class="g-recaptcha" data-sitekey="6Lejvd8ZAAAAAO5PbIUn5ofoIByWu86dj1yHHotH"></div>
 							<input type="submit" value="Submit" class="button light">
 							<p class="small">By submitting your details you are consenting to be contacted by BelleVie. Click here to read our <a href="/privacy-policy">privacy policy.</a></p>

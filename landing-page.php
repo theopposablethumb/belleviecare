@@ -1,7 +1,7 @@
 <?php
 /**
 
-Template Name: Local Landing Page
+Template Name: Landing Page
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Bellevie_Care
@@ -49,31 +49,14 @@ get_header();
  		</div> 
  		<?php 
 				$postName = $post->post_name; //Get the slug of the current page
-				
-				if ( is_child(27) ) {
-					$currentPage = substr($postName, 0, strrpos($postName, '-'));
-				} else {
-					if ( substr_count ($postName, '-') > 0 ) {
-						$currentPage = substr($postName, 0, strpos($postName, '-'));
-					} else {
-						$currentPage = $postName;
-					}
-				}
-											
+				$currentPage = substr($postName, 0, strrpos($postName, '-')); //remove everything after the last hyphen so we can use the slug of the current page as a category name
+
 			?>
  		<div class="section whitebg local">
  			<div class="content">
  				<?php
- 				if ($postName === 'banbury') {
- 					echo '<h2>Providing outstanding care in Banbury and the surrounding areas.</h2>';
- 				} else if ($postName === 'chipping-norton') {
- 					echo '<h2>Providing outstanding care in Chipping Norton and the surrounding areas.</h2>';
- 				} else if ( is_child(27) ) {
- 					echo null;
- 				} else {
- 					echo '<h2>Providing care throughout the following areas</h2>';
- 				}
-				
+ 				echo '<h2>Providing care throughout the following areas</h2>';
+				echo $currentPage;
  				// The Query
 					$queryValues = new WP_Query( array( 'name' => $currentPage, 'post_type' => 'branch', 'posts_per_page' => 1 ) ); //magic!
 					// The Loop
@@ -87,18 +70,8 @@ get_header();
 						
 						$post_data = get_post($post->post_parent);
 						$parentSlug = $post_data->post_name;
-						
-						$upOneLevel = 'locations/' . $parentSlug;
-				 	
-				 	if ($postName === 'banbury') {
-							echo '<p>We have small, local teams of Wellbeing Support Workers based throughout <a href=' . site_url($upOneLevel) . '>Oxfordshire, click here for a full list of locations</a>.</p>';
-						} else if ($postName === 'chipping-norton') {
-							echo '<p>We have small, local teams of Wellbeing Support Workers based throughout <a href=' . site_url($upOneLevel) . '>Oxfordshire, click here for a full list of locations</a>.</p>';
-						} else if ( is_child(27) ) {
-							echo null;
-						} else {
-							echo '<p>We have Wellbeing Support Teams providing care throughout <a href=' . site_url($upOneLevel) . '>Oxfordshire</a></p>';
-						} ?>
+						echo '<p>We have Wellbeing Support Teams providing care throughout Oxfordshire</p>';
+						?>
  			</div>
  		</div>
 
@@ -108,7 +81,7 @@ get_header();
  				$queryValues = new WP_Query( array( 'post_type' => 'colleague', 'category_name' => $currentPage, 'posts_per_page' => -1 ) ); //magic!
 				// The Loop
 				if ($queryValues->have_posts()) :
-					echo '<div class="section"><div class="content centered"><h2 class="light">We value our people - meet your local team in ' . get_the_title() . '</h2></div><div class="content flex justifyCenter">';
+					echo '<div class="section"><div class="content centered"><h2 class="light">We value our people - meet your local team in ' . $locTitle . '</h2></div><div class="content flex justifyCenter">';
 					while ( $queryValues->have_posts() ) : $queryValues->the_post();
     					$imageID = get_field('profile_pic');
 						$image = wp_get_attachment_image_src( $imageID, 'full' );
@@ -130,7 +103,7 @@ get_header();
 				$queryNews = new WP_Query( array( 'category_name' => $currentPage, 'post_type' => 'post', 'posts_per_page' => 3 ) ); //magic!
 
 				if ( $queryNews->have_posts() ) :
-					echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . get_the_title() . '</h2></div>';
+					echo '<div class="content"><h2 class="large green">The latest news from BelleVie Care ' . $locTitle . '</h2></div>';
 					echo '<div class="content news">';
     				while ( $queryNews->have_posts() ) : $queryNews->the_post();
         				echo '<article class="thumb flex rounded border offwhitebg"><div class="image">';
@@ -213,14 +186,6 @@ get_header();
 							
 							<label for="message">When should we call you?</label>
 							<textarea name="message" class="border rounded" rows="5" columns="70" placeholder="Let us know when we should call you, and let us know if there's anything specific you want us to know"></textarea>
-							<div class="subscribe">
-								<p>BelleVie publish a regular newsletter. Would you like to subscribe?</p>
-								<label for="send_customer_newsletter___consent_received" class="check">
-									<input type="checkbox" id="send_customer_newsletter___consent_received" name="send_customer_newsletter___consent_received">
-									<div class="checkmark border rounded"></div>
-									<span>Yes! Sign me up for the BelleVie newsletter!</span>
-								</label>
-							</div>
 							<div class="g-recaptcha" data-sitekey="6Lejvd8ZAAAAAO5PbIUn5ofoIByWu86dj1yHHotH"></div>
 							<input type="submit" value="Submit" class="button light">
 							<p class="small">By submitting your details you are consenting to be contacted by BelleVie. Click here to read our <a href="/privacy-policy">privacy policy.</a></p>

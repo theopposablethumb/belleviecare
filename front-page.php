@@ -12,7 +12,6 @@ get_header();
 ?>
 
 	<main>
-		
 		<div class="section hero">
 			<div class="content flex">
 				<?php dynamic_sidebar( 'hero'); ?>
@@ -50,7 +49,6 @@ get_header();
 				wp_reset_postdata(); ?>
 				</div>
 			</div>
-			
 			<div class="section whitebg">		
  				<?php dynamic_sidebar( 'row-1'); ?>
  			</div> 

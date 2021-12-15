@@ -41,7 +41,7 @@ get_header();
 				// The Loop
 				while ( $queryServices->have_posts() ) {
     				$queryServices->the_post();
-    				echo '<article class="shadow rounded flex whitebg branchTeam"><div><h2 class="large light"><a href="' . seoUrl(get_the_title()) . '-team">' . get_the_title() . '</a> teams</h2></div><div class="image">';
+    				echo '<article class="shadow rounded flex whitebg branchTeam"><div><h2 class="large light"><a href="' . seoUrl(get_the_title()) . '-teams">' . get_the_title() . '</a> teams</h2></div><div class="image">';
     				echo the_post_thumbnail() . '</div></article>';
 				}
 				wp_reset_postdata(); ?>

@@ -11,6 +11,11 @@ get_header();
 ?>
 
 	<main>
+		<div class="section hero">
+			<div class="content flex">
+				<?php dynamic_sidebar( 'hero'); ?>
+			</div>
+		</div>
 		<div class="section whitebg">
 			<div class="content flex cms-page">
 			<?php while ( have_posts() ) : the_post();
@@ -20,15 +25,16 @@ get_header();
 				</div>
 		</div>
 			
-			<div class="section whitebg">		
+			<div class="section whitebg testimonials">		
 				<div class="content">
+					<h2 class="large green">What our people say</h2>
  					<?php dynamic_sidebar( 'row-3'); ?>
  				</div>
  			</div> 
 		
 		<div class="section">
 			<div class="content">
-				<h2 class="large light">Current opportunities</h2>
+				<h2 class="large light" id="jobs">Current opportunities</h2>
 			</div>
 			<div class="content flex justifyCenter">
 			<?php

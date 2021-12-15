@@ -133,10 +133,15 @@ article {width: 100%;}
 .thirds:nth-child(3) {margin-right: 0;}
 .twoThirds {width: 65%; margin: 0 1.5% 0 0;}
 .quarters {width: 23.85%; margin: 0 1.5% 2.5em 0; padding: 0 0 1.5em 0; box-sizing: border-box;}
-.quarters p, .quarters ul, .quarters h3, .quarters h4 {padding: 0 1em 0 1em;}
-.quarters ul {margin-left: 1em;}
+.custom-html-widget .products {width: 93%; margin: 0 auto; padding: 0; box-sizing: border-box; border-radius: 4px; text-align: left;}
+.quarters p, .quarters ul, .quarters h3, .quarters h4, .custom-html-widget .products h4, .custom-html-widget .products p, .custom-html-widget .products ul {padding: 0 1em 0 1em;}
+.quarters ul, .custom-html-widget .products ul {margin-left: 1em;}
 .quarters:nth-child(4) {margin-right: 0;}
 .fifths {width: 17%; margin: 0 6% 0 0; box-sizing: border-box;}
+
+.custom-html-widget .products div { width: 75%; padding-bottom: 1.5em; }
+.custom-html-widget .products div.image { width: 25%; height: auto; padding: 0; }
+.custom-html-widget .products .image img { height: 100%; width: auto; }
 
 .fullWidth {width: 100%;}
 
@@ -145,6 +150,8 @@ div.left {float: left;}
 .hidden {display: none;}
 
 .custom-html-widget {margin: 0 auto;}
+.news .custom-html-widget{width: 100%}
+.news .widget_text h2 {color: #185D6F; font-weight: 300; margin: 1em 0 0;} 
 
 header>div {width: 100%; background: #FFFFFF; border: 1px solid #E5E5E5; float: left;}
 header .content {padding: 12px 0; max-width: 100%; margin: 0;}
@@ -189,6 +196,7 @@ a.twitter {background: url('icons/twitter.svg') no-repeat; background-size: 24px
 a.instagram {background: url('icons/instagram.svg') no-repeat; background-size: 24px;}
 a.linkedin {background: url('icons/linkedin.svg') no-repeat; background-size: 24px;}
 footer a[href="/privacy-policy"] {font-size: 0.875em; float: none; clear: left; display: block; margin-top: 5.75em;}
+article footer a[href="/privacy-policy"] {font-size: 1em; float: none; clear: none; display: inline; margin-top: 0;}
 footer a[href="/cookie-policy-uk"] {font-size: 0.875em; display: block; margin-top: 0.5em;}
 
 footer .content .logo {position: absolute; bottom: 0; right: 0;}
@@ -207,6 +215,19 @@ input::placeholder, textarea::placeholder {color: #888888;}
 input:focus, textarea:focus {border: 2px solid #185D6F; outline: none;}
 input:invalid, input.error, textarea:invalid, textarea.invalid {border: 2px solid #CC0300;}
 form p.error {margin-top: 0.5em; color: #CC0300;}
+
+.subscribe { border-top: 1px solid  #D3F1F1; border-bottom: 1px solid  #D3F1F1; margin: 1em 0; padding-bottom: 0.5em; }
+form .subscribe p { color: #185D6F; }
+/* custom checkbox */
+label.check { -webkit-user-select: none; -moz-user-select: none; user-select: none; margin-top: 1em; color: #333;}
+label.check span {position: relative; bottom: 0.75em;}
+input[type='checkbox'] { opacity: 0; cursor: pointer; height: 0; width: 0; display: inline-block;}
+div.checkmark { height: 2.25em; width: 2.25em; margin-right: 0.5em; background-color: #eee; position: relative; display: inline-block;}
+.check:hover input ~ .checkmark { background-color: #D3F1F1; }
+.check input[checked=true] ~ .checkmark { background-color: #185D6F; }
+.checkmark:after { content: ""; position: absolute; display: none; }
+.check input[checked=true] ~ .checkmark:after { display: block; }
+.check .checkmark:after { left: 14px; top: 8px; width: 8px; height: 20px; border: solid white; border-width: 0 6px 6px 0; transform: rotate(45deg); }
 
 .g-recaptcha {margin-top: 2em;}
 
@@ -339,6 +360,7 @@ article.services.icons {padding-top: 5.75em;}
 .branchTeam:last-child {margin-bottom: 1em;}
 .branchTeam div {width: 372px; padding: 4.8em 1.5em; box-sizing: border-box;}
 .branchTeam div:last-child {width: 519px; padding: 0;}
+.branchTeam h2.large {font-size: 2.6em;}
 .branchTeam a {color: #333; background: linear-gradient(180deg, #FFF 60%, #F8E8B1 40%);}
 .branchTeam .image {height: 394px;}
 .branchTeam img {display: block;}
@@ -387,6 +409,16 @@ a.email {padding: 0.5em 0 0.5em 3em; background: url('icons/mail-greencircle.svg
 .job h2 {margin: 1.5em 0 0 0; font-weight: 400; color: #185D6F;}
 .job .button {margin-top: 2em;}
 .job.full .button {position: absolute; top: 4.5em; right: 2em;}
+
+.testimonials .content {display: flex; flex-wrap: wrap; align-items: center;}
+.testimonials h2 {width: 100%}
+.testimonials .padded {padding: 0; box-sizing: border-box; margin-top: 1.6em;}
+.testimonials .padded:nth-child(even) {padding-top: 0.5em; width: 21%;}
+.testimonials .padded:nth-child(odd) {width: 79%;}
+.testimonials .content:last-child {margin-bottom: 3.2em;}
+.testimonials .image {width: 223px; border-radius: 50%; border: 8px solid #D3F1F1;}
+.testimonials .textwidget {background: #D3F1F1; border-radius: 1em; padding: 1em 1.6em; position: relative;}
+.testimonials .textwidget:after {content: ' '; position: absolute; top: 50%; left: -24px; width: 0; height: 0; border-style: solid; border-width: 8px 24px 8px 0; border-color: transparent #D3F1F1 transparent transparent;}
 
 .steps {padding-top: 11.437em;}
 .steps h4 {margin-top: 0.5em;}
@@ -474,7 +506,8 @@ article.thumb h2 {padding: 0 0.5em; margin: 0.5em 0;}
 article.thumb p.small {padding: 0 1em; color: #666;}
 
 article footer {background: none; color: #333; display: flex; margin-top: 1.5em; padding: 0;}
-	article footer p {font-size: 1em; color: #666; margin-right: 1em; padding-right: 1em; border-right: 1px solid #333;}
+article footer p {font-size: 1em; color: #666; margin-right: 1em; padding-right: 1em; border-right: 1px solid #333;}
+article footer form p {border: none;}
 article footer p:last-of-type {border-right: none;}
 article footer a {color: #BA7800;}
 
@@ -488,7 +521,7 @@ article footer a {color: #BA7800;}
 .tooltip::after {content: " "; position: absolute; bottom: -10px; width: 0; height: 0; border-style: solid; border-width: 17px 10px 0 10px; border-color: #FFF transparent transparent transparent;}
 
 .covid {position: fixed; top: 0; left: 0; z-index: 6; height: 100vh; width: 100vw; background: rgba(25, 25, 25, 0.4); backdrop-filter: blur(4px); }
-.covid .pop {background: #f5f5f5; margin: 20vh auto 0 auto; width: 50%; border-radius: 4px; padding: 1.5em; border-color: #185D6F; position: relative;}
+.covid .pop {background: #f5f5f5; margin: 16vh auto 16vh auto; width: 50%; height: 68vh; overflow-y: scroll; border-radius: 4px; padding: 1.5em; border-color: #185D6F; position: relative;}
 .pop h3 {margin-top: 2em;}
 .covid p img {float: left; margin: 0.25em 0.75em 0.25em 0;}
 .covid .close {position: absolute; top: 1em; right: 2em; display: block; padding: 1em 1.5em; background: url('icons/close.svg') center left no-repeat; background-size: 16px 12px;}
@@ -509,6 +542,8 @@ article footer a {color: #BA7800;}
 .callUs a {font-size: 2em; color: #185D6F; text-decoration: underline; padding: 0.75em 0 0.75em 3em; margin-top: 0.5em; display: block;}
 .callUs h2 {margin-top: 0;}
 
+div#CQCWidget-1-8775055265-1 { margin-top: 1.5em !important; }
+
 @media screen and (max-width: 1400px) {
 	header a.button.ghost {display: none;}
 }
@@ -524,6 +559,7 @@ article footer a {color: #BA7800;}
 
 @media screen and (max-width: 1170px) {
 	header a.button {display: none;} 
+	.testimonials .padded:nth-child(odd) {width: 75%; margin-left: 3%;}
 }
 
 @media screen and (max-width: 1170px) {
@@ -602,6 +638,9 @@ article footer a {color: #BA7800;}
 	.faq {padding: 1em 2em;}
 	.faq img {height: 14px; width: 14px;}
 	
+	.testimonials .padded:nth-child(even) {padding-top: 0.5em; width: 16%;}
+	.testimonials .padded:nth-child(odd) {width: 78%; margin-left: 5%;}
+	
 	.branchTeam div {width: 39%;}
 	.branchTeam div:last-child {width: 61%;}
 	.branchTeam .image img {width: 100%; height: auto;}
@@ -617,6 +656,9 @@ article footer a {color: #BA7800;}
 	.page-careers .padded {margin: 1.25em 0 6em 0;}
 	
 	.cta .image img { width: auto; height: 100%;}
+	
+	.custom-html-widget .products div { width: 50%; }
+	.custom-html-widget .products div.image { width: 50%; }
 }
 
 @media screen and (max-width: 768px) {
@@ -671,6 +713,11 @@ article footer a {color: #BA7800;}
 	.quarters:nth-child(4) {margin-right: auto;} 
 	.thirds {width: 100%; margin: 0 0 2em 0;}
 	.halves {width: 100%;}
+	
+	
+	.custom-html-widget .products div { width: 100%; }
+	.custom-html-widget .products div.image { width: 100%; height: 300px; }
+	.custom-html-widget .products div.image img { width: 100%; height: auto; }
 	
 	.videoWrapper {width: 100%; padding-bottom: 56.25%; /* 16:9 */}
 	
@@ -760,6 +807,11 @@ article footer a {color: #BA7800;}
 	.job .flex div {margin: 0;}
 	.job .flex p:first-child {display: none;} 
 	.job.full .button {position: relative; top: 0; right: 0;}
+	
+	testimonials .padded:nth-child(even) {padding-top: 0.5em; width: 100%;}
+	.testimonials .padded:nth-child(odd) {width: 100%;}
+	.testimonials .content:last-child {margin-bottom: 3.2em;}
+	.testimonials .textwidget:after {content: ' '; position: absolute; top: -24px; left: 46%; width: 0; height: 0; border-style: solid; border-width: 0 8px 24px 8px; border-color: transparent transparent #D3F1F1 transparent;}
 	
 	.section.dark {margin-top: 2.5em;}
 	

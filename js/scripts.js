@@ -118,15 +118,18 @@ let scrollToService = () => {
 }
 			
 let replacePhoneNumber = (phone) => {
-    let numberLink = document.querySelector('.section a[href^=tel]');
+    let numberLink = document.querySelectorAll('.section a[href^=tel]');
     let header = document.querySelectorAll('header .buttons a');
+    let callJill = document.querySelector('.callUs a[href^=tel]')
     header.forEach (el => {
         el.setAttribute('href', 'tel:' + phone);
         el.innerText = phone;
     })
-    numberLink.setAttribute('href', 'tel: ' + phone);
+    numberLink.forEach (el => {
+        el.setAttribute('href', 'tel: ' + phone);
+    })
+    callJill.innerText = phone;
 }
-
 let replaceCheckList = (area) => {
     let checkListLink = document.querySelector('.compare a.button');
     checkListLink.setAttribute('href', '/wp-content/uploads/2020/12/BelleVie-Checklist-' + area);
@@ -149,6 +152,7 @@ let contextualPhoneNumbers = () => {
         replacePhoneNumber('0191 313 0189');
         replaceCheckList('NE');
     } else if (current.includes('durham') || current.includes('tyne') || current.includes('northumberland')) {
+		replacePhoneNumber('0191 313 0189');
         let header = document.querySelectorAll('header .buttons a');
         header.forEach (el => {
             el.setAttribute('href', 'tel:0191 313 0189');
@@ -169,7 +173,7 @@ let makeItSo = () => {
 		saveService();
 		scrollToService();
 		contextualPhoneNumbers();
-		displayCovid();
+		//displayCovid();
  		console.log("This website crafted by hand by Brendan Meachen. Want your own custom website? Contact me - www.brendanmeachen.com");
  	});
 };

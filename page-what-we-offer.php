@@ -46,6 +46,9 @@ get_header();
 				wp_reset_postdata(); ?>
 				</div>
 			</div>
+			<div class="section">
+					<?php dynamic_sidebar( 'row-3'); ?>
+			</div>
 			
 			<div class="section dark">		
  				<div class="content">
